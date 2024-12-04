@@ -57,7 +57,7 @@ canvas {
   width: 40px; /* Adjust based on the size of your PNG */
   height: 40px; /* Adjust based on the size of your PNG */
   pointer-events: none;
-  background: url('media/hitmarker.png') no-repeat center center;
+  background: url('public/hitmarker.png') no-repeat center center;
   background-size: contain;
   animation: hitmaker-animation 0.6s ease-out forwards;
 }

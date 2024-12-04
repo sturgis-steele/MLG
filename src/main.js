@@ -1,8 +1,8 @@
 import './style.css';
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
-import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/loaders/GLTFLoader.js';
+import { PointerLockControls } from 'https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/controls/PointerLockControls.js';
+import { CSS3DRenderer, CSS3DObject } from 'https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/renderers/CSS3DRenderer.js';
 
 // Add a hitmarker on click
 document.addEventListener('click', (e) => {
@@ -139,7 +139,7 @@ document.body.appendChild(cssRenderer.domElement);
 // 5. Load the Blender scene and attach the menu to the TV screen
 const loader = new GLTFLoader();
 loader.load(
-  './media/models/scene.glb',
+  './public/scene.glb',
   (gltf) => {
     const model = gltf.scene;
     scene.add(model);
