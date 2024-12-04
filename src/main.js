@@ -139,7 +139,7 @@ document.body.appendChild(cssRenderer.domElement);
 // 5. Load the Blender scene and attach the menu to the TV screen
 const loader = new GLTFLoader();
 loader.load(
-  'https://dl.dropboxusercontent.com/scl/fi/1g3bm3gl8m7v79e6bzjas/scene.glb?rlkey=rnwndmoawz55e2cfneupl1ias&st=v1ua599h',
+  'scene.glb',
   (gltf) => {
     const model = gltf.scene;
     scene.add(model);
