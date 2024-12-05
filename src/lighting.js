@@ -27,7 +27,7 @@ export function setupLighting(scene) {
   //scene.add(pointLightHelper);
 
 
-
+  
   // Add a turquoise light for the ray gun
   const rayGunLight = new THREE.PointLight(0x00ffff, 1000, 30, 3);
   rayGunLight.position.set(135, 93, 76); // Adjust position as needed

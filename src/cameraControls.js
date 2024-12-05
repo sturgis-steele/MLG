@@ -5,6 +5,11 @@ export function initializeCameraControls(camera) {
   let yaw = 0; // Horizontal rotation (left/right)
   let pitch = 0; // Vertical rotation (up/down)
 
+  // Extract the camera's initial yaw and pitch
+  const initialEuler = new THREE.Euler().setFromQuaternion(camera.quaternion, 'YXZ');
+  yaw = initialEuler.y; // Initial horizontal rotation (yaw)
+  pitch = initialEuler.x; // Initial vertical rotation (pitch)
+
   // Add event listeners for mouse movement to control the camera
   document.addEventListener('mousemove', (event) => {
     const movementX = event.movementX || 0;
@@ -19,21 +24,7 @@ export function initializeCameraControls(camera) {
     const minPitch = -Math.PI / 2 + 0.1; // Slightly more than -90 degrees
     pitch = Math.max(minPitch, Math.min(maxPitch, pitch));
 
-    // Create a quaternion for the camera's rotation
-    const quaternion = new THREE.Quaternion();
-
-    // Apply yaw (horizontal rotation around Y-axis)
-    const yawQuaternion = new THREE.Quaternion();
-    yawQuaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), yaw);
-
-    // Apply pitch (vertical rotation around X-axis)
-    const pitchQuaternion = new THREE.Quaternion();
-    pitchQuaternion.setFromAxisAngle(new THREE.Vector3(1, 0, 0), pitch);
-
-    // Combine the yaw and pitch rotations
-    quaternion.multiply(yawQuaternion).multiply(pitchQuaternion);
-
-    // Set the camera's rotation using the quaternion
-    camera.quaternion.copy(quaternion);
+    // Update the camera rotation using yaw and pitch
+    camera.rotation.set(pitch, yaw, 0, 'YXZ'); // YXZ order for correct pitch and yaw
   });
 }
