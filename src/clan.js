@@ -53,7 +53,7 @@ export function loadClanContent(model) {
     twitterDiv.innerHTML = `
       <div class="clan-content">
         <a href="https://x.com/MLGsolana420" target="_blank">
-          <img src="/MLG/x.png" alt="Twitter" style="width: 100px; height: auto;" />
+          <img src="/MLG/x.jpg" alt="Twitter" style="width: 87px; height: auto; border: 1px solid transperant; border-radius: 12px;" />
         </a>
       </div>`;
     const twitterObject = new CSS3DObject(twitterDiv);

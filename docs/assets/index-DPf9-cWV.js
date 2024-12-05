@@ -3850,7 +3850,7 @@ void main() {
       </div>`;const a=new rn(r);a.position.set(-50,15,-150),n.add(a)}if(i){const r=document.createElement("div");r.innerHTML=`
       <div class="clan-content">
         <a href="https://x.com/MLGsolana420" target="_blank">
-          <img src="/MLG/x.png" alt="Twitter" style="width: 100px; height: auto;" />
+          <img src="/MLG/x.jpg" alt="Twitter" style="width: 87px; height: auto; border: 1px solid transperant; border-radius: 12px;" />
         </a>
       </div>`;const a=new rn(r);a.position.set(-50,57,-153),i.add(a)}}function Hs(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}function C_(s){const e=Vs(s,"p_int_monitor_c_extracam_LOD0_3"),t=Vs(s,"p_int_monitor_c_extracam_LOD0_1"),n=Vs(s,"p_int_monitor_c_extracam_LOD0"),i=Vs(s,"p_int_monitor_c_extracam_LOD0_2"),r=`
     <div class="merch-content">
