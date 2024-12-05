@@ -1,6 +1,7 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { loadClanContent } from './clan.js';
+import { loadMerchContent } from './merch.js';
 import * as THREE from 'three';
 
 export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
@@ -46,16 +47,22 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
         const menuObject = new CSS3DObject(menuDiv);
         menuObject.position.set(-1, 38.7, 0); // Adjust based on the TV's position in the Blender model
         tvNavMenu.add(menuObject);
+        
         // Add click event listener to menu items
         menuDiv.querySelectorAll('.menu-item').forEach((item) => {
           item.addEventListener('click', (event) => {
             const target = event.target.dataset.target;
             console.log(`Menu item clicked: ${target}`);
-
+            
+            // Clear previous content
+            clearTVs(model);
+            
             if (target === 'clan') {
               loadClanContent(model); // Call the clan content loader
             }
-
+            if (target === 'merch') {
+              loadMerchContent(model); // Call the merch content loader
+            }
             // Handle other menu items if needed...
           });
         });
@@ -90,4 +97,39 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
         
     }
   );
+}
+
+// Helper function to clear previous content
+function clearTVs(model) {
+  const tvNames = [
+    'p_int_monitor_c_extracam_LOD0_3',
+    'p_int_monitor_c_extracam_LOD0_1',
+    'p_int_monitor_c_extracam_LOD0',
+    'p_int_monitor_c_extracam_LOD0_2'
+  ];
+
+  tvNames.forEach((tvName) => {
+    const tv = findChildByName(model, tvName);
+    if (tv) {
+      // Remove all children that are dynamically added (CSS3DObject)
+      for (let i = tv.children.length - 1; i >= 0; i--) {
+        const child = tv.children[i];
+        if (child.isCSS3DObject) {
+          tv.remove(child);
+        }
+      }
+    }
+  });
+}
+
+
+// Helper function to find child by name
+function findChildByName(model, name) {
+  let result = null;
+  model.traverse((child) => {
+    if (child.name === name) {
+      result = child;
+    }
+  });
+  return result;
 }

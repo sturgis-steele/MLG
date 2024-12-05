@@ -53,9 +53,25 @@ img {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
-  background: url('/static.mp4') no-repeat center center;
 }
 
+/* Merch page styles */
+.merch-content {
+  font-family: Comic Sans MS;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px; /* Adjust based on TV size */
+  height: 100px; /* Adjust based on TV size */
+}
+
+.merch-content p {
+  color: white;
+  font-family: Comic Sans MS;
+  font-size: 6px;
+  text-align: center;
+  margin: 0;
+}
 
 
 /* Tv Stock Chart Styles */

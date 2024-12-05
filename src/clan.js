@@ -31,7 +31,7 @@ export function loadClanContent(model) {
         </a>
       </div>`;
     const youtubeObject = new CSS3DObject(youtubeDiv);
-    youtubeObject.position.set(-50, 12, -141); // Adjust position as needed
+    youtubeObject.position.set(-50, 15, -141); // Adjust position as needed
     tv2.add(youtubeObject);
   }
 
