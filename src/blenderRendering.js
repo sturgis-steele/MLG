@@ -22,7 +22,7 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
       // Hide the loading screen after everything is loaded
       hideLoadingScreen(loadingScreen);
 
-      // Locate the TV screen
+      // Locate the tv screen
       let tvNavMenu;
       model.traverse((child) => {
         if (child.name === 'p_int_monitor_c_bink_LOD0') {
@@ -45,7 +45,34 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
         const menuObject = new CSS3DObject(menuDiv);
         menuObject.position.set(-1.2, 39.6, 0); // Adjust based on the TV's position in the Blender model
         tvNavMenu.add(menuObject);
+
       }
+        // Locate the TV screen
+        let tvStockChart;
+        model.traverse((child) => {
+          if (child.name === 'p_int_monitor_b_ui3d_LOD0') {
+            tvStockChart = child;
+          }
+        });
+
+        if (tvStockChart) {
+        // Create a container div for the video
+            const videoDiv = document.createElement('div');
+            videoDiv.innerHTML = `
+                <div class="stock-chart">
+                <video autoplay loop muted>
+                    <source src="/MLG/IlluminatiStockChart.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                </div>
+            `;
+
+            // Wrap the div in a CSS3DObject for placement
+            const videoObject = new CSS3DObject(videoDiv);
+            videoObject.position.set(-3.9, 0, 0); // Adjust as needed based on TV's position
+            tvStockChart.add(videoObject);
+      }
+        
     }
   );
 }

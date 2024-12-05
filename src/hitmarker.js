@@ -15,6 +15,10 @@ export function initializeHitmarker() {
         y = e.pageY;
       }
   
+      // Set hitmarker position
+      hitmarker.style.left = `${x - 20}px`; // Adjust for hitmarker size
+      hitmarker.style.top = `${y - 20}px`;
+  
       // Append hitmarker to the body
       document.body.appendChild(hitmarker);
   
