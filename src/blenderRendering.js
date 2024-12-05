@@ -1,5 +1,6 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import { loadClanContent } from './clan.js';
 import * as THREE from 'three';
 
 export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
@@ -35,18 +36,32 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
         const menuDiv = document.createElement('div');
         menuDiv.innerHTML = `
           <div class="nav-tv">
-              <div class="menu-item">Lobby</div>
-              <div class="menu-item">About</div>
-              <div class="menu-item">Merch</div>
-              <div class="menu-item">Clan</div>
+            <div class="menu-item" data-target="lobby">Lobby</div>
+            <div class="menu-item" data-target="vault">Vault</div>
+            <div class="menu-item" data-target="merch">Merch</div>
+            <div class="menu-item" data-target="clan">Clan</div>
           </div>
         `;
 
         const menuObject = new CSS3DObject(menuDiv);
-        menuObject.position.set(-1.2, 39.6, 0); // Adjust based on the TV's position in the Blender model
+        menuObject.position.set(-1, 38.7, 0); // Adjust based on the TV's position in the Blender model
         tvNavMenu.add(menuObject);
+        // Add click event listener to menu items
+        menuDiv.querySelectorAll('.menu-item').forEach((item) => {
+          item.addEventListener('click', (event) => {
+            const target = event.target.dataset.target;
+            console.log(`Menu item clicked: ${target}`);
 
+            if (target === 'clan') {
+              loadClanContent(model); // Call the clan content loader
+            }
+
+            // Handle other menu items if needed...
+          });
+        });
       }
+
+      
         // Locate the TV screen
         let tvStockChart;
         model.traverse((child) => {
