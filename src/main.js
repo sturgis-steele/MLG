@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import { initializeLoadingScreen, showLoadingScreen, hideLoadingScreen } from './loadingScreen.js';
 
 // Add a hitmarker on click
 document.addEventListener('click', (e) => {
@@ -136,6 +137,12 @@ cssRenderer.domElement.style.top = '0';
 document.body.appendChild(cssRenderer.domElement);
 
 
+
+// Initialize the loading screen
+const loadingScreen = initializeLoadingScreen();
+showLoadingScreen(loadingScreen);
+
+
 // 5. Load the Blender scene and attach the menu to the TV screen
 const loader = new GLTFLoader();
 loader.load(
@@ -151,7 +158,20 @@ loader.load(
       mixer = new THREE.AnimationMixer(model);
       gltf.animations.forEach((clip) => mixer.clipAction(clip).play());
     }
-
+    
+    // Hide the loading screen after everything is loaded
+    hideLoadingScreen(loadingScreen);
+    
+    (xhr) => {
+      // Optionally update the loading progress
+      const percentage = (xhr.loaded / xhr.total) * 100;
+      console.log(`Loading: ${percentage.toFixed(2)}%`);
+    },
+    (error) => {
+      console.error('Error loading Blender scene:', error);
+      loadingScreen.innerHTML = `<p>Error loading content. Please try again later.</p>`;
+    }
+  
     // Locate the TV screen
     let tvScreen;
     model.traverse((child) => {
