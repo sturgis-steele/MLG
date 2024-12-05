@@ -23,14 +23,14 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
       hideLoadingScreen(loadingScreen);
 
       // Locate the TV screen
-      let tvScreen;
+      let tvNavMenu;
       model.traverse((child) => {
         if (child.name === 'p_int_monitor_c_bink_LOD0') {
-          tvScreen = child;
+          tvNavMenu = child;
         }
       });
 
-      if (tvScreen) {
+      if (tvNavMenu) {
         // Add the HTML menu to the TV screen
         const menuDiv = document.createElement('div');
         menuDiv.innerHTML = `
@@ -44,7 +44,7 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
 
         const menuObject = new CSS3DObject(menuDiv);
         menuObject.position.set(-1.2, 39.6, 0); // Adjust based on the TV's position in the Blender model
-        tvScreen.add(menuObject);
+        tvNavMenu.add(menuObject);
       }
     }
   );
