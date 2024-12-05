@@ -1,0 +1,27 @@
+export function initializeHitmarker() {
+    // Add a hitmarker on click
+    document.addEventListener('click', (e) => {
+      const hitmarker = document.createElement('div');
+      hitmarker.className = 'hitmarker';
+  
+      let x, y;
+      if (document.pointerLockElement) {
+        // Place hitmarker at the center of the screen when pointer is locked
+        x = window.innerWidth / 2;
+        y = window.innerHeight / 2;
+      } else {
+        // Place hitmarker where the mouse clicks
+        x = e.pageX;
+        y = e.pageY;
+      }
+  
+      // Append hitmarker to the body
+      document.body.appendChild(hitmarker);
+  
+      // Remove hitmarker after animation ends
+      setTimeout(() => {
+        hitmarker.remove();
+      }, 600); // Match animation duration
+    });
+  }
+  
