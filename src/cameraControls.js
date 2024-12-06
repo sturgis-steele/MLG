@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 
+let isCameraEnabled = false; // Flag to track camera control state
+
 export function initializeCameraControls(camera) {
   // Variables to track yaw and pitch
   let yaw = 0; // Horizontal rotation (left/right)
@@ -12,6 +14,8 @@ export function initializeCameraControls(camera) {
 
   // Add event listeners for mouse movement to control the camera
   document.addEventListener('mousemove', (event) => {
+    if (!isCameraEnabled) return; // Ignore input if camera is disabled
+
     const movementX = event.movementX || 0;
     const movementY = event.movementY || 0;
 
@@ -27,4 +31,13 @@ export function initializeCameraControls(camera) {
     // Update the camera rotation using yaw and pitch
     camera.rotation.set(pitch, yaw, 0, 'YXZ'); // YXZ order for correct pitch and yaw
   });
+}
+
+// Functions to enable/disable camera controls
+export function enableCamera() {
+  isCameraEnabled = true;
+}
+
+export function disableCamera() {
+  isCameraEnabled = false;
 }

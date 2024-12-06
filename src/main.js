@@ -5,6 +5,7 @@ import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockCont
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { initializeLoadingScreen, showLoadingScreen, hideLoadingScreen } from './loadingScreen.js';
 import { setupLighting } from './lighting.js';
+import { initializeMusicPlayer } from './musicPlayer.js';
 import { initializeHitmarker } from './hitmarker.js';
 import { initializeCameraControls } from './cameraControls.js';
 import { loadBlenderScene } from './blenderRendering.js';
@@ -15,6 +16,9 @@ let mixer;
 // Initialize the loading screen
 const loadingScreen = initializeLoadingScreen();
 showLoadingScreen(loadingScreen);
+
+// Initialize the music
+initializeMusicPlayer();
 
 // Initialize hitmarker functionality
 initializeHitmarker();

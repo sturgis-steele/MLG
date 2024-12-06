@@ -2,6 +2,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { loadClanContent } from './clan.js';
 import { loadMerchContent } from './merch.js';
+import { loadVaultContent } from './vault.js';
 import * as THREE from 'three';
 
 export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
@@ -62,6 +63,12 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
             }
             if (target === 'merch') {
               loadMerchContent(model); // Call the merch content loader
+            }
+            if (target === 'vault') {
+              loadVaultContent(model); // Call the merch content loader
+            }
+            if (target === 'lobby') {
+              loadLobbyContent(model); // Call the merch content loader
             }
             // Handle other menu items if needed...
           });

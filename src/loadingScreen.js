@@ -1,6 +1,6 @@
 import './style.css';
+import { enableCamera, disableCamera } from './cameraControls.js';
 
-// loadingScreen.js
 
 export function initializeLoadingScreen() {
     // Create the loading screen element dynamically
@@ -17,9 +17,11 @@ export function initializeLoadingScreen() {
   
   export function showLoadingScreen(loadingScreen) {
     loadingScreen.style.display = 'flex';
+    disableCamera(); // Ensure camera movement is disabled
   }
   
   export function hideLoadingScreen(loadingScreen) {
     loadingScreen.style.display = 'none';
+    enableCamera(); // Ensure camera movement is disabled
   }
   
