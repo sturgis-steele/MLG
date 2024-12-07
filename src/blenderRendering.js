@@ -1,5 +1,6 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import { loadLivePriceData } from './livePriceTV.js';
 import { loadClanContent } from './clan.js';
 import { loadMerchContent } from './merch.js';
 import { loadVaultContent } from './vault.js';
@@ -24,6 +25,9 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
 
       // Hide the loading screen after everything is loaded
       hideLoadingScreen(loadingScreen);
+      
+      // Call the function to load live price data
+      loadLivePriceData(model);
 
       // Locate the tv screen
       let tvNavMenu;

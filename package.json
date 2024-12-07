@@ -17,6 +17,7 @@
     "vite": "^6.0.2"
   },
   "dependencies": {
+    "coingecko-api": "^1.0.10",
     "three": "^0.171.0"
   }
 }
