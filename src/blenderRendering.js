@@ -1,9 +1,10 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
-import { loadLivePriceData } from './livePriceTV.js';
-import { loadClanContent } from './clan.js';
-import { loadMerchContent } from './merch.js';
+import { loadLiveData } from './livePriceTV.js';
+import { loadLobbyContent } from './lobby.js';
 import { loadVaultContent } from './vault.js';
+import { loadMerchContent } from './merch.js';
+import { loadClanContent } from './clan.js';
 import * as THREE from 'three';
 
 export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
@@ -27,7 +28,8 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
       hideLoadingScreen(loadingScreen);
       
       // Call the function to load live price data
-      loadLivePriceData(model);
+      loadLiveData(model);
+      
 
       // Locate the tv screen
       let tvNavMenu;
