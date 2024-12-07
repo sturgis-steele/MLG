@@ -34,7 +34,7 @@ loadBlenderScene(scene, hideLoadingScreen, loadingScreen);
 setupLighting(scene);
 
 // Setup camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 27, 1500);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1500);
 camera.position.set(10, 143.5, 0);
 camera.lookAt(100, 120, 15);
 
