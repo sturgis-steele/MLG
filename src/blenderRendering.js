@@ -1,5 +1,6 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import { initializeAnimationMixer } from './animationManager.js';
 import { loadLiveData } from './livePriceTV.js';
 import { loadLobbyContent } from './lobby.js';
 import { loadVaultContent } from './vault.js';
@@ -17,16 +18,12 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
 
       console.log('Blender scene loaded:', model);
 
-      // If animations exist, initialize the mixer
-      let mixer = null;
-      if (gltf.animations.length) {
-        mixer = new THREE.AnimationMixer(model);
-        gltf.animations.forEach((clip) => mixer.clipAction(clip).play());
-      }
+      // Initialize the animation mixer
+      initializeAnimationMixer(model, gltf.animations);
 
       // Hide the loading screen after everything is loaded
       hideLoadingScreen(loadingScreen);
-      
+
       // Call the function to load live price data
       loadLiveData(model);
       

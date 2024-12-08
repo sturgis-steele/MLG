@@ -9,26 +9,23 @@ import { initializeMusicPlayer } from './musicPlayer.js';
 import { initializeHitmarker } from './hitmarker.js';
 import { initializeCameraControls } from './cameraControls.js';
 import { loadBlenderScene } from './blenderRendering.js';
+import { updateAnimationMixer } from './animationManager.js';
 
-let mixer;
-
-
-// Initialize the loading screen
-const loadingScreen = initializeLoadingScreen();
-showLoadingScreen(loadingScreen);
-
-// Initialize the music
-initializeMusicPlayer();
-
-// Initialize hitmarker functionality
-initializeHitmarker();
+const clock = new THREE.Clock();
 
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
-// Call Blender rendering function
-loadBlenderScene(scene, hideLoadingScreen, loadingScreen);
+// Initialize the loading screen
+const loadingScreen = initializeLoadingScreen();
+showLoadingScreen(loadingScreen);
+
+// Initialize music
+initializeMusicPlayer();
+
+// Initialize hitmarker functionality
+initializeHitmarker();
 
 // Setup lighting
 setupLighting(scene);
@@ -57,6 +54,9 @@ cssRenderer.domElement.style.position = 'absolute';
 cssRenderer.domElement.style.top = '0';
 document.body.appendChild(cssRenderer.domElement);
 
+// Call Blender rendering function
+loadBlenderScene(scene, hideLoadingScreen, loadingScreen);
+
 // Handle resizing
 window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -65,17 +65,15 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
 });
 
-// 7. Animation loop
-const clock = new THREE.Clock();
-
+// Animation loop
 function animate() {
   requestAnimationFrame(animate);
 
-  if (mixer) {
-    const delta = clock.getDelta();
-    mixer.update(delta);
-  }
+  // Update animations
+  const delta = clock.getDelta();
+  updateAnimationMixer(delta);
 
+  // Render the scene
   renderer.render(scene, camera);
   cssRenderer.render(scene, camera);
 }
