@@ -3891,18 +3891,18 @@ void main() {
         <a href="https://x.com/MLGsolana420" target="_blank">
           <img src="/MLG/x.jpg" alt="Twitter" style="width: 87px; height: auto; border: 1px solid transperant; border-radius: 12px;" />
         </a>
-      </div>`;const a=new Mt(r);a.position.set(-50,57,-153),i.add(a)}}function Ws(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}function q_(s,e,t){new qg().load("/MLG/scene.glb",i=>{const r=i.scene;s.add(r),console.log("Blender scene loaded:",r),z_(r,i.animations),e(t),H_(r);let a;if(r.traverse(c=>{c.name==="p_int_monitor_c_bink_LOD0"&&(a=c)}),a){const c=document.createElement("div");c.innerHTML=`
-          <div class="nav-tv">
-            <div class="menu-item" data-target="lobby">Lobby</div>
-            <div class="menu-item" data-target="vault">Vault</div>
-            <div class="menu-item" data-target="merch">Merch</div>
-            <div class="menu-item" data-target="clan">Clan</div>
+      </div>`;const a=new Mt(r);a.position.set(-50,57,-153),i.add(a)}}function Ws(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}function q_(s,e){let t;if(s.traverse(n=>{n.name==="p_int_monitor_c_bink_LOD0"&&(t=n)}),t){const n=document.createElement("div");n.innerHTML=`
+      <div class="nav-tv">
+        <div class="menu-item" data-target="lobby">Lobby</div>
+        <div class="menu-item" data-target="vault">Vault</div>
+        <div class="menu-item" data-target="merch">Merch</div>
+        <div class="menu-item" data-target="clan">Clan</div>
+      </div>
+    `;const i=new Mt(n);i.position.set(-1,38.7,0),t.add(i),n.querySelectorAll(".menu-item").forEach(r=>{r.addEventListener("click",a=>{const o=a.target.dataset.target;console.log(`Menu item clicked: ${o}`),e(s),o==="lobby"&&V_(s),o==="vault"&&G_(s),o==="merch"&&W_(s),o==="clan"&&X_(s)})})}}function Y_(s,e,t){new qg().load("/MLG/scene.glb",i=>{const r=i.scene;s.add(r),console.log("Blender scene loaded:",r),z_(r,i.animations),e(t),H_(r),q_(r,j_);let a;if(r.traverse(o=>{o.name==="p_int_monitor_b_ui3d_LOD0"&&(a=o)}),a){const o=document.createElement("div");o.innerHTML=`
+          <div class="stock-chart">
+          <video autoplay loop muted>
+              <source src="/MLG/IlluminatiStockChart.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
           </div>
-        `;const l=new Mt(c);l.position.set(-1,38.7,0),a.add(l),c.querySelectorAll(".menu-item").forEach(u=>{u.addEventListener("click",h=>{const f=h.target.dataset.target;console.log(`Menu item clicked: ${f}`),Y_(r),f==="clan"&&X_(r),f==="merch"&&W_(r),f==="vault"&&G_(r),f==="lobby"&&V_(r)})})}let o;if(r.traverse(c=>{c.name==="p_int_monitor_b_ui3d_LOD0"&&(o=c)}),o){const c=document.createElement("div");c.innerHTML=`
-                <div class="stock-chart">
-                <video autoplay loop muted>
-                    <source src="/MLG/IlluminatiStockChart.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                </div>
-            `;const l=new Mt(c);l.position.set(-3.9,0,0),o.add(l)}})}function Y_(s){["p_int_monitor_c_extracam_LOD0_3","p_int_monitor_c_extracam_LOD0_1","p_int_monitor_c_extracam_LOD0","p_int_monitor_c_extracam_LOD0_2"].forEach(t=>{const n=j_(s,t);if(n)for(let i=n.children.length-1;i>=0;i--){const r=n.children[i];r.isCSS3DObject&&n.remove(r)}})}function j_(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}const K_=new jh,os=new mh;os.background=new we(0);const wl=D_();U_(wl);O_();B_();F_(os);const ei=new Tt(75,window.innerWidth/window.innerHeight,.1,1500);ei.position.set(10,143.5,0);ei.lookAt(100,120,15);L_(ei);const hs=new Xg({antialias:!0});hs.setSize(window.innerWidth,window.innerHeight);hs.setPixelRatio(window.devicePixelRatio);document.body.appendChild(hs.domElement);document.body.style.cursor="crosshair";const Hi=new C_;Hi.setSize(window.innerWidth,window.innerHeight);Hi.domElement.style.position="absolute";Hi.domElement.style.top="0";document.body.appendChild(Hi.domElement);q_(os,N_,wl);window.addEventListener("resize",()=>{hs.setSize(window.innerWidth,window.innerHeight),Hi.setSize(window.innerWidth,window.innerHeight),ei.aspect=window.innerWidth/window.innerHeight,ei.updateProjectionMatrix()});function Rl(){requestAnimationFrame(Rl);const s=K_.getDelta();k_(s),hs.render(os,ei),Hi.render(os,ei)}Rl();
+        `;const c=new Mt(o);c.position.set(-3.9,0,0),a.add(c)}})}function j_(s){["p_int_monitor_c_extracam_LOD0_3","p_int_monitor_c_extracam_LOD0_1","p_int_monitor_c_extracam_LOD0","p_int_monitor_c_extracam_LOD0_2"].forEach(t=>{const n=K_(s,t);if(n)for(let i=n.children.length-1;i>=0;i--){const r=n.children[i];r.isCSS3DObject&&n.remove(r)}})}function K_(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}const $_=new jh,os=new mh;os.background=new we(0);const wl=D_();U_(wl);O_();B_();F_(os);const ei=new Tt(75,window.innerWidth/window.innerHeight,.1,1500);ei.position.set(10,143.5,0);ei.lookAt(100,120,15);L_(ei);const hs=new Xg({antialias:!0});hs.setSize(window.innerWidth,window.innerHeight);hs.setPixelRatio(window.devicePixelRatio);document.body.appendChild(hs.domElement);document.body.style.cursor="crosshair";const Hi=new C_;Hi.setSize(window.innerWidth,window.innerHeight);Hi.domElement.style.position="absolute";Hi.domElement.style.top="0";document.body.appendChild(Hi.domElement);Y_(os,N_,wl);window.addEventListener("resize",()=>{hs.setSize(window.innerWidth,window.innerHeight),Hi.setSize(window.innerWidth,window.innerHeight),ei.aspect=window.innerWidth/window.innerHeight,ei.updateProjectionMatrix()});function Rl(){requestAnimationFrame(Rl);const s=$_.getDelta();k_(s),hs.render(os,ei),Hi.render(os,ei)}Rl();

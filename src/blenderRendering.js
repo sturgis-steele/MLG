@@ -2,10 +2,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { initializeAnimationMixer } from './animationManager.js';
 import { loadLiveData } from './livePriceTV.js';
-import { loadLobbyContent } from './lobby.js';
-import { loadVaultContent } from './vault.js';
-import { loadMerchContent } from './merch.js';
-import { loadClanContent } from './clan.js';
+import { initializeTVNavMenu } from './tvNavMenu.js';
 import * as THREE from 'three';
 
 export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
@@ -26,85 +23,35 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen) {
 
       // Call the function to load live price data
       loadLiveData(model);
-      
 
-      // Locate the tv screen
-      let tvNavMenu;
+      // Initialize TV navigation menu
+      initializeTVNavMenu(model, clearTVs);
+
+      // Locate the TV screen for stock chart
+      let tvStockChart;
       model.traverse((child) => {
-        if (child.name === 'p_int_monitor_c_bink_LOD0') {
-          tvNavMenu = child;
+        if (child.name === 'p_int_monitor_b_ui3d_LOD0') {
+          tvStockChart = child;
         }
       });
 
-      if (tvNavMenu) {
-        // Add the HTML menu to the TV screen
-        const menuDiv = document.createElement('div');
-        menuDiv.innerHTML = `
-          <div class="nav-tv">
-            <div class="menu-item" data-target="lobby">Lobby</div>
-            <div class="menu-item" data-target="vault">Vault</div>
-            <div class="menu-item" data-target="merch">Merch</div>
-            <div class="menu-item" data-target="clan">Clan</div>
+      if (tvStockChart) {
+        // Create a container div for the video
+        const videoDiv = document.createElement('div');
+        videoDiv.innerHTML = `
+          <div class="stock-chart">
+          <video autoplay loop muted>
+              <source src="/MLG/IlluminatiStockChart.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
           </div>
         `;
 
-        const menuObject = new CSS3DObject(menuDiv);
-        menuObject.position.set(-1, 38.7, 0); // Adjust based on the TV's position in the Blender model
-        tvNavMenu.add(menuObject);
-        
-        // Add click event listener to menu items
-        menuDiv.querySelectorAll('.menu-item').forEach((item) => {
-          item.addEventListener('click', (event) => {
-            const target = event.target.dataset.target;
-            console.log(`Menu item clicked: ${target}`);
-            
-            // Clear previous content
-            clearTVs(model);
-            
-            if (target === 'clan') {
-              loadClanContent(model); // Call the clan content loader
-            }
-            if (target === 'merch') {
-              loadMerchContent(model); // Call the merch content loader
-            }
-            if (target === 'vault') {
-              loadVaultContent(model); // Call the merch content loader
-            }
-            if (target === 'lobby') {
-              loadLobbyContent(model); // Call the merch content loader
-            }
-            // Handle other menu items if needed...
-          });
-        });
+        // Wrap the div in a CSS3DObject for placement
+        const videoObject = new CSS3DObject(videoDiv);
+        videoObject.position.set(-3.9, 0, 0); // Adjust as needed based on TV's position
+        tvStockChart.add(videoObject);
       }
-
-      
-        // Locate the TV screen
-        let tvStockChart;
-        model.traverse((child) => {
-          if (child.name === 'p_int_monitor_b_ui3d_LOD0') {
-            tvStockChart = child;
-          }
-        });
-
-        if (tvStockChart) {
-        // Create a container div for the video
-            const videoDiv = document.createElement('div');
-            videoDiv.innerHTML = `
-                <div class="stock-chart">
-                <video autoplay loop muted>
-                    <source src="/MLG/IlluminatiStockChart.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                </div>
-            `;
-
-            // Wrap the div in a CSS3DObject for placement
-            const videoObject = new CSS3DObject(videoDiv);
-            videoObject.position.set(-3.9, 0, 0); // Adjust as needed based on TV's position
-            tvStockChart.add(videoObject);
-      }
-        
     }
   );
 }
@@ -131,7 +78,6 @@ function clearTVs(model) {
     }
   });
 }
-
 
 // Helper function to find child by name
 function findChildByName(model, name) {
