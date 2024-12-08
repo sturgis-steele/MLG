@@ -58,3 +58,38 @@ export function initializeTVNavMenu(model, clearTVs) {
     });
   }
 }
+
+
+// Helper function to clear previous content from TVs
+export function clearTVs(model) {
+    const tvNames = [
+      'p_int_monitor_c_extracam_LOD0_3',
+      'p_int_monitor_c_extracam_LOD0_1',
+      'p_int_monitor_c_extracam_LOD0',
+      'p_int_monitor_c_extracam_LOD0_2'
+    ];
+  
+    tvNames.forEach((tvName) => {
+      const tv = findChildByName(model, tvName);
+      if (tv) {
+        // Remove all children that are dynamically added (CSS3DObject)
+        for (let i = tv.children.length - 1; i >= 0; i--) {
+          const child = tv.children[i];
+          if (child.isCSS3DObject) {
+            tv.remove(child);
+          }
+        }
+      }
+    });
+  }
+  
+  // Helper function to find a child by name
+  export function findChildByName(model, name) {
+    let result = null;
+    model.traverse((child) => {
+      if (child.name === name) {
+        result = child;
+      }
+    });
+    return result;
+  }
