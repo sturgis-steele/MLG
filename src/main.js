@@ -1,11 +1,10 @@
 import './style.css';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
-import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { initializeLoadingScreen, showLoadingScreen, hideLoadingScreen } from './loadingScreen.js';
 import { setupLighting } from './lighting.js';
-import { initializeMusicPlayer } from './musicPlayer.js';
+
 import { initializeHitmarker } from './hitmarker.js';
 import { initializeCameraControls } from './cameraControls.js';
 import { loadBlenderScene } from './blenderRendering.js';
@@ -20,12 +19,6 @@ scene.background = new THREE.Color(0x000000);
 // Initialize the loading screen
 const loadingScreen = initializeLoadingScreen();
 showLoadingScreen(loadingScreen);
-
-// Initialize music
-initializeMusicPlayer();
-
-// Initialize hitmarker functionality
-initializeHitmarker();
 
 // Setup lighting
 setupLighting(scene);
@@ -54,9 +47,6 @@ cssRenderer.domElement.style.position = 'absolute';
 cssRenderer.domElement.style.top = '0';
 document.body.appendChild(cssRenderer.domElement);
 
-// Call Blender rendering function
-loadBlenderScene(scene, hideLoadingScreen, loadingScreen);
-
 // Handle resizing
 window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -64,6 +54,12 @@ window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 });
+
+// Initialize hitmarker functionality
+initializeHitmarker();
+
+// Call Blender rendering function
+loadBlenderScene(scene, hideLoadingScreen, loadingScreen, camera, renderer);
 
 // Animation loop
 function animate() {
