@@ -65,7 +65,7 @@ export function initializeMusicPlayerWithInteraction(model, scene, camera, rende
     <div class="gramophone-interaction">
     </div>
   `;
-
+  
   // Wrap the div in a CSS3DObject
   const gramophoneObject = new CSS3DObject(gramophoneDiv);
   gramophoneObject.position.set(0, 150, 0); // Adjust position as needed
