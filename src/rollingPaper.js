@@ -11,6 +11,9 @@ import { enableCamera, disableCamera } from './cameraControls.js';
  */
 export function initializeRollingPaperWithInteraction(model, scene, camera, renderer) {
   let isCameraLocked = false;
+  let originalCameraPosition = camera.position.clone();
+  let originalCameraQuaternion = camera.quaternion.clone();
+  let exitButton; // The 'X' button
 
   // Locate the rolling paper in the scene
   let rollingPaper;
@@ -76,6 +79,7 @@ export function initializeRollingPaperWithInteraction(model, scene, camera, rend
       } else {
         // Final adjustment to the camera position and rotation
         applyFinalRotation(camera, finalPosition, lookAtPosition);
+        showExitButton(); // Show the exit button after the camera locks
         isCameraLocked = true;
         console.log('Camera is now locked over the rolling paper.');
       }
@@ -83,6 +87,71 @@ export function initializeRollingPaperWithInteraction(model, scene, camera, rend
 
     animate();
   }
+
+  function moveCameraBackToOriginal() {
+    const duration = 1500; // Duration of the animation in milliseconds
+    const startTime = performance.now();
+    const startPosition = camera.position.clone();
+    const startQuaternion = camera.quaternion.clone(); // Starting rotation
+
+    function animate() {
+      const elapsed = performance.now() - startTime;
+      const t = Math.min(elapsed / duration, 1);
+
+      // Interpolate camera position
+      camera.position.lerpVectors(startPosition, originalCameraPosition, t);
+
+      // Smoothly interpolate rotation
+      camera.quaternion.slerp(startQuaternion, originalCameraQuaternion, t);
+
+      if (t < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        // Camera is back to its original position
+        hideExitButton();
+        enableCamera();
+        isCameraLocked = false;
+        console.log('Camera returned to original position.');
+      }
+    }
+
+    animate();
+  }
+
+  function showExitButton() {
+    if (!exitButton) {
+        // Create the exit button
+        const exitDiv = document.createElement('div');
+        exitDiv.innerHTML = `<div class="exit-button"><p style="font-size: 9px;">Back</p></div>`;
+
+        exitDiv.addEventListener('click', moveCameraBackToOriginal);
+
+        // Wrap the button in a CSS3DObject and add to the scene
+        exitButton = new CSS3DObject(exitDiv);
+        exitButton.position.set(10, 0, 99);
+        exitButton.rotation.x = (Math.PI * 3) / 2; // Rotate the button
+        scene.add(exitButton);
+    }
+    exitButton.element.style.display = 'block'; // Ensure the button is visible
+}
+
+function hideExitButton() {
+    if (exitButton) {
+        // Remove the DOM element from the parent (if any)
+        if (exitButton.element.parentNode) {
+            exitButton.element.parentNode.removeChild(exitButton.element);
+        }
+
+        // Optionally, remove the object from the scene
+        if (scene.children.includes(exitButton)) {
+            scene.remove(exitButton);
+        }
+
+        // Clear reference to prevent memory leaks
+        exitButton = null;
+    }
+}
+
 
   /**
    * Applies the final manual rotation to the camera.
