@@ -4,7 +4,6 @@ import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockCont
 import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { initializeLoadingScreen, showLoadingScreen, hideLoadingScreen } from './loadingScreen.js';
 import { setupLighting } from './lighting.js';
-
 import { initializeHitmarker } from './hitmarker.js';
 import { initializeCameraControls } from './cameraControls.js';
 import { loadBlenderScene } from './blenderRendering.js';
@@ -60,6 +59,7 @@ initializeHitmarker();
 
 // Call Blender rendering function
 loadBlenderScene(scene, hideLoadingScreen, loadingScreen, camera, renderer);
+
 
 // Animation loop
 function animate() {

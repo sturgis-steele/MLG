@@ -3,6 +3,8 @@ import { initializeAnimationMixer } from './animationManager.js';
 import { initializeMusicPlayerWithInteraction } from './musicPlayer.js';
 import { loadLiveData } from './livePriceTV.js';
 import { initializeTVNavMenu, clearTVs, findChildByName } from './tvNavMenu.js'; // Import functions
+import { initializeRollingPaperWithInteraction } from './rollingPaper.js';
+import { initializeCameraControls, enableCamera, disableCamera } from './cameraControls.js';
 import { initializeLoopingVideoTVs } from './loopingVideoTVs.js';
 import * as THREE from 'three';
 
@@ -13,27 +15,31 @@ export function loadBlenderScene(scene, hideLoadingScreen, loadingScreen, camera
     (gltf) => {
       const model = gltf.scene;
       scene.add(model);
-
+  
       console.log('Blender scene loaded:', model);
-
-      // Initialize the animation mixer
+  
       initializeAnimationMixer(model, gltf.animations);
-
-      // Hide the loading screen after everything is loaded
       hideLoadingScreen(loadingScreen);
-      
-      // Initialize music player with the loaded model for the gramophone click interaction
       initializeMusicPlayerWithInteraction(model, scene, camera, renderer);
-
-      // Call the function to load live price data
       loadLiveData(model);
-
-      // Initialize TV navigation menu
       initializeTVNavMenu(model, clearTVs);
-
-      // Initialize looping video TVs
       initializeLoopingVideoTVs(model);
-
+  
+      const cameraControls = initializeCameraControls(camera);
+      const { unlockCamera } = initializeRollingPaperWithInteraction(model, scene, camera, renderer);
+  
+      // Ensure unlock button is added or exists in the DOM
+      let unlockButton = document.getElementById('unlock-button');
+      if (!unlockButton) {
+        unlockButton = document.createElement('button');
+        unlockButton.id = 'unlock-button';
+        unlockButton.textContent = 'Unlock Camera';
+        document.body.appendChild(unlockButton);
+      }
+  
+      unlockButton.addEventListener('click', () => {
+        unlockCamera();
+      });
     }
   );
-}
+}  
