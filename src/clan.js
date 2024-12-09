@@ -39,7 +39,7 @@ export function loadClanContent(model) {
     const discordDiv = document.createElement('div');
     discordDiv.innerHTML = `
       <div class="clan-content">
-        <a href="https://discord.gg/fstwSu6S77" target="_blank">
+        <a href="https://discord.gg/munnopoly" target="_blank">
           <img src="/MLG/discord.png" alt="Discord" style="width: 100px; height: auto;" />
         </a>
       </div>`;

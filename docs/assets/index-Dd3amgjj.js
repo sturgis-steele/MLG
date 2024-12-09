@@ -3889,7 +3889,7 @@ void main() {
         </a>
       </div>`;const o=new ht(r);o.position.set(-50,15,-141),t.add(o)}if(n){const r=document.createElement("div");r.innerHTML=`
       <div class="clan-content">
-        <a href="https://discord.gg/fstwSu6S77" target="_blank">
+        <a href="https://discord.gg/munnopoly" target="_blank">
           <img src="/MLG/discord.png" alt="Discord" style="width: 100px; height: auto;" />
         </a>
       </div>`;const o=new ht(r);o.position.set(-50,15,-150),n.add(o)}if(i){const r=document.createElement("div");r.innerHTML=`
