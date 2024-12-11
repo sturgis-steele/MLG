@@ -21,8 +21,8 @@ export function initializeTVNavMenu(model, clearTVs) {
     menuDiv.innerHTML = `
       <div class="nav-tv">
         <div class="menu-item" data-target="lobby">Lobby</div>
-        <div class="menu-item" data-target="vault">Vault</div>
         <div class="menu-item" data-target="servers">Servers</div>
+        <div class="menu-item" data-target="vault">Vault</div>
         <div class="menu-item" data-target="clan">Clan</div>
       </div>
     `;
@@ -45,11 +45,11 @@ export function initializeTVNavMenu(model, clearTVs) {
         if (target === 'lobby') {
           loadLobbyContent(model);
         }
-        if (target === 'vault') {
-          loadVaultContent(model);
-        }
         if (target === 'servers') {
           loadServersContent(model);
+        }
+        if (target === 'vault') {
+          loadVaultContent(model);
         }
         if (target === 'clan') {
           loadClanContent(model);
