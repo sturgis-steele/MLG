@@ -1,66 +1,94 @@
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 
 export function loadVaultContent(model) {
-  // Locate TVs for Vault content
-  const tv1 = findChildByName(model, 'p_int_monitor_c_extracam_LOD0_3');
-  const tv2 = findChildByName(model, 'p_int_monitor_c_extracam_LOD0_1');
-  const tv3 = findChildByName(model, 'p_int_monitor_c_extracam_LOD0');
-  const tv4 = findChildByName(model, 'p_int_monitor_c_extracam_LOD0_2');
+  const tvs = []; // Array to store references to all TVs and their videos
+  let currentPlayingVideo = null; // Track the currently playing video
 
+  // Helper function to initialize a TV
+  function initializeTV(tv, videoSrc, position) {
+    if (!tv) return;
 
-  // Define content for each TV
-  if (tv1) {
-    const memeDiv1 = document.createElement('div');
-    memeDiv1.innerHTML = `
-      <div class="vault-content">
-          <p style="font-size: 15px; color: white; text-align: center; margin: 0;">Insert Meme</p>
-      </div>`;
-    const meme1Object = new CSS3DObject(memeDiv1);
-    meme1Object.position.set(-50, 57, -138); // Adjust position as needed
-    tv1.add(meme1Object);
+    const videoElement = document.createElement('video');
+    videoElement.setAttribute('autoplay', '');
+    videoElement.setAttribute('loop', '');
+    videoElement.setAttribute('muted', ''); // Start muted
+    videoElement.innerHTML = `
+      <source src="${videoSrc}" type="video/mp4">
+      Your browser does not support the video tag.
+    `;
+
+    const vaultDiv = document.createElement('div');
+    vaultDiv.className = 'vault-content';
+    vaultDiv.appendChild(videoElement);
+
+    const tvObject = new CSS3DObject(vaultDiv);
+    tvObject.position.set(...position); // Spread the position array into individual arguments
+    tv.add(tvObject);
+
+    // Add click event listener to play audio for this TV
+    vaultDiv.addEventListener('click', () => {
+      playAudioForTV(videoElement);
+    });
+
+    // Store TV and video reference
+    tvs.push({ tv, videoElement });
   }
 
-  if (tv2) {
-    const memeDiv2 = document.createElement('div');
-    memeDiv2.innerHTML = `
-      <div class="vault-content">
-          <p style="font-size: 15px; color: white; text-align: center; margin: 0;">Insert Meme</p>
-      </div>`;
-    const meme2Object = new CSS3DObject(memeDiv2);
-    meme2Object.position.set(-50, 15, -141); // Adjust position as needed
-    tv2.add(meme2Object);
-  }
+  // Initialize TVs with content
+  initializeTV(
+    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_3'),
+    '/MLG/IMG_0747.MP4',
+    [-1270, 530, -3400]
+  );
 
-  if (tv3) {
-    const memeDiv3 = document.createElement('div');
-    memeDiv3.innerHTML = `
-      <div class="vault-content">
-          <p style="font-size: 15px; color: white; text-align: center; margin: 0;">Insert Meme</p>
-      </div>`;
-    const meme3Object = new CSS3DObject(memeDiv3);
-    meme3Object.position.set(-50, 15, -150); // Adjust position as needed
-    tv3.add(meme3Object);
-  }
+  initializeTV(
+    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_1'),
+    '/MLG/IMG_0749.MP4',
+    [-1270, -425, -3400]
+  );
 
-  if (tv4) {
-    const memeDiv4 = document.createElement('div');
-    memeDiv4.innerHTML = `
-      <div class="vault-content">
-          <p style="font-size: 15px; color: white; text-align: center; margin: 0;">Insert Meme</p>
-      </div>`;
-    const meme4Object = new CSS3DObject(memeDiv4);
-    meme4Object.position.set(-50, 57, -153); // Adjust position as needed
-    tv4.add(meme4Object);
+  initializeTV(
+    findChildByName(model, 'p_int_monitor_c_extracam_LOD0'),
+    '/MLG/IMG_0746.MP4',
+    [-1300, -425, -3900]
+  );
+
+  initializeTV(
+    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_2'),
+    '/MLG/IMG_0743.MP4',
+    [-1300, 530, -3900]
+  );
+
+  // Function to mute all TVs except the clicked one and pause the current video if clicked again
+  function playAudioForTV(selectedVideo) {
+    if (currentPlayingVideo === selectedVideo) {
+      // If the selected TV is already playing, pause it
+      selectedVideo.muted = true;
+      selectedVideo.pause();
+      currentPlayingVideo = null; // Reset the current playing video
+    } else {
+      // Otherwise, play the selected video and pause all others
+      tvs.forEach(({ videoElement }) => {
+        if (videoElement === selectedVideo) {
+          videoElement.muted = false; // Unmute the selected video
+          videoElement.play(); // Ensure it plays
+          currentPlayingVideo = selectedVideo; // Update the current playing video
+        } else {
+          videoElement.muted = true; // Mute all others
+          videoElement.pause(); // Pause muted videos
+        }
+      });
+    }
   }
 }
- 
+
 // Helper function to find child by name
 function findChildByName(model, name) {
-    let result = null;
-    model.traverse((child) => {
-      if (child.name === name) {
-        result = child;
-      }
-    });
-    return result;
-  }
+  let result = null;
+  model.traverse((child) => {
+    if (child.name === name) {
+      result = child;
+    }
+  });
+  return result;
+}

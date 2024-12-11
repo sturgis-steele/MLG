@@ -9,6 +9,18 @@ export function initializeLoopingVideoTVs(model) {
       position: { x: -3.9, y: 0, z: 0 }, // Adjust the position of the video
       cssClass: 'stock-chart', // Add a CSS class for styling
     },
+    {
+      tvName: 'p_int_monitor_a_bink_LOD0_1', // Replace with the Blender object name for the TV
+      videoSrc: '/MLG/IMG_0740.MP4', // Path to the video file
+      position: { x: -1040, y: -150, z: -3000 }, // Adjust the position of the video
+      cssClass: 'looping-video', // Add a CSS class for styling
+    },
+    {
+      tvName: 'p_int_monitor_a_bink_LOD0_2', // Replace with the Blender object name for the TV
+      videoSrc: '/MLG/IMG_0740.MP4', // Path to the video file
+      position: { x: -1040, y: 850, z: -3000 }, // Adjust the position of the video
+      cssClass: 'looping-video', // Add a CSS class for styling
+    },
     // Add more TVs with their respective video sources and positions if needed
     // Example:
     // {

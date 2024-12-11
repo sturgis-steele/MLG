@@ -15,12 +15,21 @@ export function loadServersContent(model) {
     </div>
   `;
 
+  const serverIframeHTML = `
+    <div class="">
+      <iframe
+        src="http://170.39.49.121:1624/Interaction/Render/Banner?serverId=127.0.0.1:7777"
+        width="100%" height="100%" style="border-width: 0;">
+      </iframe>
+    </div>
+  `;
+
   // Define content for each TV
   if (tv1) {
     const tv1Div = document.createElement('div');
-    tv1Div.innerHTML = underConstructionHTML;
+    tv1Div.innerHTML = serverIframeHTML; // Embed server info in the first TV
     const tv1Object = new CSS3DObject(tv1Div);
-    tv1Object.position.set(-60, 63, -150); // Adjust position as needed
+    tv1Object.position.set(0, 0, 0); // Adjust position as needed
     tv1.add(tv1Object);
   }
 
