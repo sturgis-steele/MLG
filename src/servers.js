@@ -1,14 +1,14 @@
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 
-export function loadMerchContent(model) {
-  // Locate TVs for Merch content
+export function loadServersContent(model) {
+  // Locate TVs for Servers content
   const tv1 = findChildByName(model, 'p_int_monitor_c_extracam_LOD0_3');
   const tv2 = findChildByName(model, 'p_int_monitor_c_extracam_LOD0_1');
   const tv3 = findChildByName(model, 'p_int_monitor_c_extracam_LOD0');
   const tv4 = findChildByName(model, 'p_int_monitor_c_extracam_LOD0_2');
 
   const underConstructionHTML = `
-    <div class="merch-content">
+    <div class="servers-content">
       <p style="font-size: 15px; color: white; text-align: center; margin: 0;">
         Under Construction
       </p>

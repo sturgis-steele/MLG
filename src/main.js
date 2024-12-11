@@ -1,6 +1,5 @@
 import './style.css';
 import * as THREE from 'three';
-import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
 import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { initializeLoadingScreen, showLoadingScreen, hideLoadingScreen } from './loadingScreen.js';
 import { setupLighting } from './lighting.js';

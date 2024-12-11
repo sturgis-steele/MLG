@@ -1,7 +1,7 @@
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { loadLobbyContent } from './lobby.js';
 import { loadVaultContent } from './vault.js';
-import { loadMerchContent } from './merch.js';
+import { loadServersContent } from './servers.js';
 import { loadClanContent } from './clan.js';
 
 // Function to create and attach the TV navigation menu
@@ -22,7 +22,7 @@ export function initializeTVNavMenu(model, clearTVs) {
       <div class="nav-tv">
         <div class="menu-item" data-target="lobby">Lobby</div>
         <div class="menu-item" data-target="vault">Vault</div>
-        <div class="menu-item" data-target="merch">Merch</div>
+        <div class="menu-item" data-target="servers">Servers</div>
         <div class="menu-item" data-target="clan">Clan</div>
       </div>
     `;
@@ -48,8 +48,8 @@ export function initializeTVNavMenu(model, clearTVs) {
         if (target === 'vault') {
           loadVaultContent(model);
         }
-        if (target === 'merch') {
-          loadMerchContent(model);
+        if (target === 'servers') {
+          loadServersContent(model);
         }
         if (target === 'clan') {
           loadClanContent(model);

@@ -109,7 +109,6 @@ export function initializeRollingPaperWithInteraction(model, scene, camera, rend
         hideExitButton();
       } else {
         // Camera is back to its original position
-
         enableCamera();
         isCameraLocked = false;
         console.log('Camera returned to original position.');

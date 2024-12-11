@@ -3872,7 +3872,7 @@ void main() {
       <div class="vault-content">
           <p style="font-size: 15px; color: white; text-align: center; margin: 0;">Insert Meme</p>
       </div>`;const o=new ht(r);o.position.set(-50,57,-153),i.add(o)}}function Vs(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}function W_(s){const e=Gs(s,"p_int_monitor_c_extracam_LOD0_3"),t=Gs(s,"p_int_monitor_c_extracam_LOD0_1"),n=Gs(s,"p_int_monitor_c_extracam_LOD0"),i=Gs(s,"p_int_monitor_c_extracam_LOD0_2"),r=`
-    <div class="merch-content">
+    <div class="servers-content">
       <p style="font-size: 15px; color: white; text-align: center; margin: 0;">
         Under Construction
       </p>
@@ -3901,10 +3901,10 @@ void main() {
       <div class="nav-tv">
         <div class="menu-item" data-target="lobby">Lobby</div>
         <div class="menu-item" data-target="vault">Vault</div>
-        <div class="menu-item" data-target="merch">Merch</div>
+        <div class="menu-item" data-target="servers">Servers</div>
         <div class="menu-item" data-target="clan">Clan</div>
       </div>
-    `;const i=new ht(n);i.position.set(-1,38.7,0),t.add(i),n.querySelectorAll(".menu-item").forEach(r=>{r.addEventListener("click",o=>{const a=o.target.dataset.target;console.log(`Menu item clicked: ${a}`),e(s),a==="lobby"&&V_(s),a==="vault"&&G_(s),a==="merch"&&W_(s),a==="clan"&&X_(s)})})}}function Y_(s){["p_int_monitor_c_extracam_LOD0_3","p_int_monitor_c_extracam_LOD0_1","p_int_monitor_c_extracam_LOD0","p_int_monitor_c_extracam_LOD0_2"].forEach(t=>{const n=j_(s,t);if(n)for(let i=n.children.length-1;i>=0;i--){const r=n.children[i];r.isCSS3DObject&&n.remove(r)}})}function j_(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}function K_(s,e,t,n){let i=t.position.clone(),r=t.quaternion.clone(),o,a;if(s.traverse(_=>{_.name==="rollingpaper"&&(a=_)}),!a){console.error("Rolling paper object not found in the scene.");return}const c=document.createElement("div");c.innerHTML='<div class="rolling-paper-interaction"></div>',c.style.cssText=`
+    `;const i=new ht(n);i.position.set(-1,38.7,0),t.add(i),n.querySelectorAll(".menu-item").forEach(r=>{r.addEventListener("click",o=>{const a=o.target.dataset.target;console.log(`Menu item clicked: ${a}`),e(s),a==="lobby"&&V_(s),a==="vault"&&G_(s),a==="servers"&&W_(s),a==="clan"&&X_(s)})})}}function Y_(s){["p_int_monitor_c_extracam_LOD0_3","p_int_monitor_c_extracam_LOD0_1","p_int_monitor_c_extracam_LOD0","p_int_monitor_c_extracam_LOD0_2"].forEach(t=>{const n=j_(s,t);if(n)for(let i=n.children.length-1;i>=0;i--){const r=n.children[i];r.isCSS3DObject&&n.remove(r)}})}function j_(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}function K_(s,e,t,n){let i=t.position.clone(),r=t.quaternion.clone(),o,a;if(s.traverse(_=>{_.name==="rollingpaper"&&(a=_)}),!a){console.error("Rolling paper object not found in the scene.");return}const c=document.createElement("div");c.innerHTML='<div class="rolling-paper-interaction"></div>',c.style.cssText=`
     background: rgba(0, 0, 0, 0);
     height: 3px;
     width: 3px;

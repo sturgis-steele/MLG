@@ -55,8 +55,8 @@ img {
   object-fit: contain;
 }
 
-/* Merch page styles */
-.merch-content {
+/* Servers page styles */
+.servers-content {
   font-family: Comic Sans MS;
   display: flex;
   justify-content: center;
