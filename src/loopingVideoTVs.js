@@ -17,7 +17,7 @@ export function initializeLoopingVideoTVs(model) {
     },
     {
       tvName: 'p_int_monitor_a_bink_LOD0_2', // Replace with the Blender object name for the TV
-      videoSrc: '/MLG/IMG_0740.MP4', // Path to the video file
+      videoSrc: '/MLG/IMG_0763.MP4', // Path to the video file
       position: { x: -1040, y: 850, z: -3000 }, // Adjust the position of the video
       cssClass: 'looping-video', // Add a CSS class for styling
     },

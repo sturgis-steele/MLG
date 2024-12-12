@@ -7,8 +7,9 @@ export function initializeLoadingScreen() {
     const loadingScreen = document.createElement('div');
     loadingScreen.id = 'loading-screen';
     loadingScreen.innerHTML = `
-      <div class="spinner"></div>
-      <p>Loading...</p>
+      <video autoplay muted loop id="loading-screen" style="object-fit: cover;">
+      <source src="/MLG/dankloadscreen2.mp4" type="video/mp4">
+      </video>
     `;
     document.body.appendChild(loadingScreen);
   

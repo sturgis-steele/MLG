@@ -57,39 +57,80 @@ export function initializeTVNavMenu(model, clearTVs) {
       });
     });
   }
+
+  // Initialize static TV screens with default video
+  initializeStaticTVs(model);
 }
 
+// Initialize TVs with static videos before navigation
+function initializeStaticTVs(model) {
+  const staticVideoSrc = '/MLG/TV_static1.mp4'; // Default video path
+  const tvNames = [
+    'p_int_monitor_c_extracam_LOD0_3',
+    'p_int_monitor_c_extracam_LOD0_1',
+    'p_int_monitor_c_extracam_LOD0',
+    'p_int_monitor_c_extracam_LOD0_2',
+  ];
+  const positions = [
+    [-1270, 530, -3400],
+    [-1270, -425, -3400],
+    [-1300, -425, -3900],
+    [-1300, 530, -3900],
+  ];
+
+  tvNames.forEach((tvName, index) => {
+    const tv = findChildByName(model, tvName);
+    if (tv) {
+      const videoElement = document.createElement('video');
+      videoElement.src = staticVideoSrc;
+      videoElement.setAttribute('autoplay', '');
+      videoElement.setAttribute('loop', '');
+      videoElement.muted = true; // Start muted
+      videoElement.style.width = '1020px';
+      videoElement.style.overflow = 'hidden';
+      videoElement.style.borderRadius = '180px'; // Adjust border radius for TV screen
+
+      const videoDiv = document.createElement('div');
+      videoDiv.className = 'tv-static-content';
+      videoDiv.appendChild(videoElement);
+
+      const videoObject = new CSS3DObject(videoDiv);
+      videoObject.position.set(...positions[index]);
+      tv.add(videoObject);
+    }
+  });
+}
 
 // Helper function to clear previous content from TVs
 export function clearTVs(model) {
-    const tvNames = [
-      'p_int_monitor_c_extracam_LOD0_3',
-      'p_int_monitor_c_extracam_LOD0_1',
-      'p_int_monitor_c_extracam_LOD0',
-      'p_int_monitor_c_extracam_LOD0_2'
-    ];
-  
-    tvNames.forEach((tvName) => {
-      const tv = findChildByName(model, tvName);
-      if (tv) {
-        // Remove all children that are dynamically added (CSS3DObject)
-        for (let i = tv.children.length - 1; i >= 0; i--) {
-          const child = tv.children[i];
-          if (child.isCSS3DObject) {
-            tv.remove(child);
-          }
+  const tvNames = [
+    'p_int_monitor_c_extracam_LOD0_3',
+    'p_int_monitor_c_extracam_LOD0_1',
+    'p_int_monitor_c_extracam_LOD0',
+    'p_int_monitor_c_extracam_LOD0_2',
+  ];
+
+  tvNames.forEach((tvName) => {
+    const tv = findChildByName(model, tvName);
+    if (tv) {
+      // Remove all children that are dynamically added (CSS3DObject)
+      for (let i = tv.children.length - 1; i >= 0; i--) {
+        const child = tv.children[i];
+        if (child.isCSS3DObject) {
+          tv.remove(child);
         }
       }
-    });
-  }
-  
-  // Helper function to find a child by name
-  export function findChildByName(model, name) {
-    let result = null;
-    model.traverse((child) => {
-      if (child.name === name) {
-        result = child;
-      }
-    });
-    return result;
-  }
+    }
+  });
+}
+
+// Helper function to find a child by name
+export function findChildByName(model, name) {
+  let result = null;
+  model.traverse((child) => {
+    if (child.name === name) {
+      result = child;
+    }
+  });
+  return result;
+}
