@@ -17,10 +17,6 @@ export function loadServersContent(model) {
 
   const serverIframeHTML = `
     <div class="">
-      <iframe
-        src="http://170.39.49.121:1624/Interaction/Render/Banner?serverId=127.0.0.1:7777"
-        width="100%" height="100%" style="border-width: 0;">
-      </iframe>
     </div>
   `;
 
