@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { loadLobbyContent } from './lobby.js';
 import { loadVaultContent } from './vault.js';
@@ -66,17 +67,18 @@ export function initializeTVNavMenu(model, clearTVs) {
 // Initialize TVs with static videos before navigation
 function initializeStaticTVs(model) {
   const staticVideoSrc = '/MLG/TV_static1.mp4'; // Default video path
-  const tvNames = [
-    'TV5',
-    'TV6',
-    'TV7',
-    'TV8',
-  ];
+  const tvNames = ['TV6', 'TV6', 'TV7', 'TV7'];
   const positions = [
-    [-1270, 530, -3400],
-    [-1270, -425, -3400],
-    [-1300, -425, -3900],
-    [-1300, 530, -3900],
+    [2500, 500, -1750],
+    [2500, -415, -1750],
+    [1195, 450, -2050],
+    [1195, -380, -2050],
+  ];
+  const rotations = [
+    { x: 0, y: -1.2, z: 0 }, // Rotation for TV6 (first instance)
+    { x: 0, y: -1.2, z: 0 }, // Rotation for TV6 (second instance)
+    { x: 0, y: -0.9, z: 0 }, // Rotation for TV7 (first instance)
+    { x: 0, y: -0.9, z: 0 }, // Rotation for TV7 (second instance)
   ];
 
   tvNames.forEach((tvName, index) => {
@@ -87,29 +89,26 @@ function initializeStaticTVs(model) {
       videoElement.setAttribute('autoplay', '');
       videoElement.setAttribute('loop', '');
       videoElement.muted = true; // Start muted
-      videoElement.style.width = '1020px';
-      videoElement.style.overflow = 'hidden';
-      videoElement.style.borderRadius = '180px'; // Adjust border radius for TV screen
-
+  
+      // Assign specific CSS class based on TV name
+      const cssClass = tvName === 'TV6' ? 'tv6-content' : tvName === 'TV7' ? 'tv7-content' : '';
+  
       const videoDiv = document.createElement('div');
-      videoDiv.className = 'tv-static-content';
+      videoDiv.className = `tv-static-content ${cssClass}`; // Apply class dynamically
       videoDiv.appendChild(videoElement);
-
+  
       const videoObject = new CSS3DObject(videoDiv);
-      videoObject.position.set(...positions[index]);
+      videoObject.position.set(...positions[index]); // Set position
+      videoObject.rotation.set(rotations[index].x, rotations[index].y, rotations[index].z); // Set rotation
       tv.add(videoObject);
     }
   });
+  
 }
 
 // Helper function to clear previous content from TVs
 export function clearTVs(model) {
-  const tvNames = [
-    'TV5',
-    'TV6',
-    'TV7',
-    'TV8',
-  ];
+  const tvNames = ['TV6', 'TV6', 'TV7', 'TV7'];
 
   tvNames.forEach((tvName) => {
     const tv = findChildByName(model, tvName);

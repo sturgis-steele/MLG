@@ -43,9 +43,7 @@ export function initializeLoopingVideoTVs(model) {
           </video>
         </div>
       `;
-      console.log('Found TV8:', tvVideoMappings); // Debug log
-      console.log('TV8 Position:', tvVideoMappings.position);
-      console.log('TV8 Rotation:', tvVideoMappings.rotation);
+
       // Wrap the div in a CSS3DObject for placement
       const videoObject = new CSS3DObject(videoDiv);
       videoObject.position.set(position.x, position.y, position.z);
