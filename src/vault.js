@@ -1,62 +1,74 @@
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import './css/vault.css';
 
 export function loadVaultContent(model) {
   const tvs = []; // Array to store references to all TVs and their videos
   let currentPlayingVideo = null; // Track the currently playing video
 
   // Helper function to initialize a TV
-  function initializeTV(tv, videoSrc, position) {
+  function initializeTV(tv, videoSrc, position, rotation = { x: 0, y: 0, z: 0 }, tvClass) {
     if (!tv) return;
-
+  
     const videoElement = document.createElement('video');
     videoElement.setAttribute('autoplay', '');
     videoElement.setAttribute('loop', '');
     videoElement.setAttribute('muted', ''); // Start muted
+    videoElement.className = tvClass; // Apply specific class to the video element
     videoElement.innerHTML = `
       <source src="${videoSrc}" type="video/mp4">
       Your browser does not support the video tag.
     `;
-
+  
     const vaultDiv = document.createElement('div');
-    vaultDiv.className = 'vault-content';
+    vaultDiv.className = 'vault-content'; // General styles
     vaultDiv.appendChild(videoElement);
-
+  
     const tvObject = new CSS3DObject(vaultDiv);
-    tvObject.position.set(...position); // Spread the position array into individual arguments
+    tvObject.position.set(...position); // Set position
+    tvObject.rotation.set(rotation.x, rotation.y, rotation.z); // Set rotation
     tv.add(tvObject);
-
+  
     // Add click event listener to play audio for this TV
-    vaultDiv.addEventListener('click', () => {
+    videoElement.addEventListener('click', () => {
       playAudioForTV(videoElement);
     });
-
+  
     // Store TV and video reference
-    tvs.push({ tv, videoElement });
+    tvs.push({ tvObject, videoElement });
   }
+  
 
-  // Initialize TVs with content
+  // Initialize TVs with content and specific CSS classes
   initializeTV(
-    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_3'),
+    findChildByName(model, 'TV5'),
     '/MLG/IMG_0747.MP4',
-    [-1270, 530, -3400]
+    [960, 525, -3900], // Position
+    { x: 0, y: -0.6, z: 0 }, // Rotation
+    'vault-tv5' // Specific CSS class
   );
 
   initializeTV(
-    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_1'),
+    findChildByName(model, 'TV6'),
     '/MLG/IMG_0749.MP4',
-    [-1270, -425, -3400]
+    [420, -300, -2100], // Position
+    { x: 0, y: -0.6, z: 0 }, // Rotation
+    'vault-tv6' // Specific CSS class
   );
 
   initializeTV(
-    findChildByName(model, 'p_int_monitor_c_extracam_LOD0'),
+    findChildByName(model, 'TV7'),
     '/MLG/IMG_0746.MP4',
-    [-1300, -425, -3900]
+    [2100, 0, -2700], // Position
+    { x: 0, y: -0.5, z: 0 }, // Rotation
+    'vault-tv7' // Specific CSS class
   );
 
   initializeTV(
-    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_2'),
+    findChildByName(model, 'TV8'),
     '/MLG/IMG_0743.MP4',
-    [-1300, 530, -3900]
+    [600, -425, -2700], // Position
+    { x: 0, y: -0.5, z: 0 }, // Rotation
+    'vault-tv8' // Specific CSS class
   );
 
   // Function to mute all TVs except the clicked one and pause the current video if clicked again

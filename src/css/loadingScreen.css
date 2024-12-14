@@ -1,0 +1,20 @@
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8); /* Optional: Add a semi-transparent background */
+}
+
+#loading-screen video {
+    object-fit: cover;
+    width: 100%; /* Optional: Adjust the width and height for responsiveness */
+    height: 100%;
+}

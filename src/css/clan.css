@@ -1,0 +1,36 @@
+
+/* General styling for all clan content */
+.clan-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+  }
+  
+  /* Telegram-specific styles */
+  .clan-content.telegram img {
+    width: 93px;
+    height: auto;
+  }
+  
+  /* YouTube-specific styles */
+  .clan-content.youtube img {
+    width: 100px;
+    height: auto;
+  }
+  
+  /* Discord-specific styles */
+  .clan-content.discord img {
+    width: 100px;
+    height: auto;
+  }
+  
+  /* Twitter-specific styles */
+  .clan-content.twitter img {
+    width: 87px;
+    height: auto;
+    border: 1px solid transparent;
+    border-radius: 12px;
+  }
+  

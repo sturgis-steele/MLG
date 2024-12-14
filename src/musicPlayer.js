@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import './css/musicPlayer.css';
 
 export function initializeMusicPlayerWithInteraction(model, scene, camera, renderer) {
   const audio = document.createElement('audio');
@@ -49,7 +50,7 @@ export function initializeMusicPlayerWithInteraction(model, scene, camera, rende
   // Locate the gramophone in the scene
   let gramophone;
   model.traverse((child) => {
-    if (child.name === 'p6_zm_tm_gramophone_LOD0') {
+    if (child.name === 'HD2L_MOD_Gramophone_pips') {
       gramophone = child;
     }
   });

@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { enableCamera, disableCamera } from './cameraControls.js';
+import './css/rollingPaper.css';
 
 /**
  * Initialize the rolling paper with interaction.
@@ -30,13 +31,7 @@ export function initializeRollingPaperWithInteraction(model, scene, camera, rend
 
   // Create a div element for the rolling paper interaction
   const rollingPaperDiv = document.createElement('div');
-  rollingPaperDiv.innerHTML = `<div class="rolling-paper-interaction"></div>`;
-  rollingPaperDiv.style.cssText = `
-    background: rgba(0, 0, 0, 0);
-    height: 3px;
-    width: 3px;
-    cursor: pointer;
-  `;
+  rollingPaperDiv.innerHTML = `<div class="rolling-paper"></div>`;
 
   // Wrap the div in a CSS3DObject
   const rollingPaperObject = new CSS3DObject(rollingPaperDiv);
@@ -122,7 +117,7 @@ export function initializeRollingPaperWithInteraction(model, scene, camera, rend
     if (!exitButton) {
         // Create the exit button
         const exitDiv = document.createElement('div');
-        exitDiv.innerHTML = `<div class="exit-button"><p style="font-size: 9px;">Back</p></div>`;
+        exitDiv.innerHTML = `<div class="exit-button"></div>`;
 
         exitDiv.addEventListener('click', moveCameraBackToOriginal);
 

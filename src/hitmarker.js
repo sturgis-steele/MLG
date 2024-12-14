@@ -1,3 +1,5 @@
+import './css/hitmarker.css';
+
 export function initializeHitmarker() {
   // Add a hitmarker on click
   document.addEventListener('click', (e) => {

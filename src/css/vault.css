@@ -1,0 +1,44 @@
+/* General styles for vault TVs */
+.vault-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  pointer-events: auto; /* Enable pointer events */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Specific styles for each TV */
+.vault-tv5 {
+  height: 500px;
+  width: 600px;
+  object-fit: contain;
+  border-radius: 120px;
+  border: 60px solid rgb(55, 52, 51);
+}
+
+.vault-tv6 {
+  height: 370px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 60px;
+  border: 2px solid blue;
+}
+
+.vault-tv7 {
+  height: 75%; /* Relative height */
+  width: auto;
+  object-fit: fill;
+  border-radius: 25px;
+  border: 2px solid green;
+}
+
+.vault-tv8 {
+  height: 85%; /* Relative height */
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 2px solid yellow;
+}

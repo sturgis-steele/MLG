@@ -1,33 +1,28 @@
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import './css/loopingVideoTVs.css'; // Import the new CSS file
 
 // Function to initialize looping video TVs
 export function initializeLoopingVideoTVs(model) {
   const tvVideoMappings = [
     {
-      tvName: 'p_int_monitor_b_ui3d_LOD0', // Replace with the Blender object name for the TV
+      tvName: 'TV4', // Replace with the Blender object name for the TV
       videoSrc: '/MLG/IlluminatiStockChart.mp4', // Path to the video file
-      position: { x: -3.9, y: 0, z: 0 }, // Adjust the position of the video
+      position: { x: -380, y: 720, z: -5500 }, // Adjust the position of the video
       cssClass: 'stock-chart', // Add a CSS class for styling
     },
     {
-      tvName: 'p_int_monitor_a_bink_LOD0_1', // Replace with the Blender object name for the TV
+      tvName: 'TV10', // Replace with the Blender object name for the TV
       videoSrc: '/MLG/IMG_0740.MP4', // Path to the video file
-      position: { x: -1040, y: -150, z: -3000 }, // Adjust the position of the video
+      position: { x: -1060, y: -170, z: -3150 }, // Adjust the position of the video
       cssClass: 'looping-video', // Add a CSS class for styling
     },
     {
-      tvName: 'p_int_monitor_a_bink_LOD0_2', // Replace with the Blender object name for the TV
+      tvName: 'TV11', // Replace with the Blender object name for the TV
       videoSrc: '/MLG/IMG_0763.MP4', // Path to the video file
-      position: { x: -1040, y: 850, z: -3000 }, // Adjust the position of the video
+      position: { x: -1050, y: 930, z: -3150 }, // Adjust the position of the video
       cssClass: 'looping-video', // Add a CSS class for styling
     },
     // Add more TVs with their respective video sources and positions if needed
-    // Example:
-    // {
-    //   tvName: 'p_int_monitor_c_ui3d_LOD0',
-    //   videoSrc: '/MLG/AnotherVideo.mp4',
-    //   position: { x: 1.5, y: 0, z: 0 },
-    // },
   ];
 
   tvVideoMappings.forEach(({ tvName, videoSrc, position, cssClass }) => {

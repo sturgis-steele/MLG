@@ -1,4 +1,4 @@
-import './style.css';
+import './css/style.css';
 import * as THREE from 'three';
 import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { initializeLoadingScreen, showLoadingScreen, hideLoadingScreen } from './loadingScreen.js';

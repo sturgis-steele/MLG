@@ -3,6 +3,7 @@ import { loadLobbyContent } from './lobby.js';
 import { loadVaultContent } from './vault.js';
 import { loadServersContent } from './servers.js';
 import { loadClanContent } from './clan.js';
+import './css/tvNavMenu.css';
 
 // Function to create and attach the TV navigation menu
 export function initializeTVNavMenu(model, clearTVs) {
@@ -10,7 +11,7 @@ export function initializeTVNavMenu(model, clearTVs) {
 
   // Locate the TV for the navigation menu
   model.traverse((child) => {
-    if (child.name === 'p_int_monitor_c_bink_LOD0') {
+    if (child.name === 'TV1') {
       tvNavMenu = child;
     }
   });
@@ -29,7 +30,7 @@ export function initializeTVNavMenu(model, clearTVs) {
 
     // Wrap the menu in a CSS3DObject
     const menuObject = new CSS3DObject(menuDiv);
-    menuObject.position.set(-1, 38.7, 0); // Adjust based on the TV's position in the Blender model
+    menuObject.position.set(-20.1, 21, -269); // Adjust based on the TV's position in the Blender model
     tvNavMenu.add(menuObject);
 
     // Add click event listener to menu items
@@ -66,10 +67,10 @@ export function initializeTVNavMenu(model, clearTVs) {
 function initializeStaticTVs(model) {
   const staticVideoSrc = '/MLG/TV_static1.mp4'; // Default video path
   const tvNames = [
-    'p_int_monitor_c_extracam_LOD0_3',
-    'p_int_monitor_c_extracam_LOD0_1',
-    'p_int_monitor_c_extracam_LOD0',
-    'p_int_monitor_c_extracam_LOD0_2',
+    'TV5',
+    'TV6',
+    'TV7',
+    'TV8',
   ];
   const positions = [
     [-1270, 530, -3400],
@@ -104,10 +105,10 @@ function initializeStaticTVs(model) {
 // Helper function to clear previous content from TVs
 export function clearTVs(model) {
   const tvNames = [
-    'p_int_monitor_c_extracam_LOD0_3',
-    'p_int_monitor_c_extracam_LOD0_1',
-    'p_int_monitor_c_extracam_LOD0',
-    'p_int_monitor_c_extracam_LOD0_2',
+    'TV5',
+    'TV6',
+    'TV7',
+    'TV8',
   ];
 
   tvNames.forEach((tvName) => {

@@ -1,11 +1,12 @@
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import './css/servers.css'; // Import the new CSS file
 
 export function loadServersContent(model) {
   const tvs = []; // Array to store references to all TVs and their videos
   let currentPlayingVideo = null; // Track the currently playing video
 
   // Helper function to initialize a TV
-  function initializeTV(tv, videoSrc, position, title) {
+  function initializeTV(tv, videoSrc, position, rotation, title) {
     if (!tv) return;
 
     const videoElement = document.createElement('video');
@@ -27,23 +28,13 @@ export function loadServersContent(model) {
     // Add the title as an overlay
     const titleElement = document.createElement('div');
     titleElement.className = 'server-title';
-    titleElement.style.position = 'absolute';
-    titleElement.style.bottom = '10px';
-    titleElement.style.left = '50%';
-    titleElement.style.width = '600px';
-    titleElement.style.height = '40px';
-    titleElement.style.transform = 'translateX(-50%)';
-    titleElement.style.color = 'white';
-    titleElement.style.fontSize = '24px';
-    titleElement.style.textShadow = '2px 2px 4px rgba(0, 0, 0, 0.7)';
-    titleElement.style.background = 'rgba(0, 0, 0, 0.5)';
-    titleElement.style.padding = '5px 10px';
     titleElement.innerText = title; // Set the title text
 
     serverDiv.appendChild(titleElement);
 
     const tvObject = new CSS3DObject(serverDiv);
-    tvObject.position.set(...position); // Spread the position array into individual arguments
+    tvObject.position.set(...position); // Set position
+    tvObject.rotation.set(rotation.x, rotation.y, rotation.z); // Set rotation
     tv.add(tvObject);
 
     // Add click event listener to play audio for this TV
@@ -57,31 +48,35 @@ export function loadServersContent(model) {
 
   // Initialize TVs with content
   initializeTV(
-    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_3'),
-    '/MLG/minecraftscreen.mp4',
-    [-1270, 530, -3400],
-    'Minecraft Server'
+    findChildByName(model, 'TV5'),
+    '/MLG/CODServer.mp4',
+    [960, 525, -3900], // Position
+    { x: 0, y: -0.6, z: 0 }, // Rotation
+    'Call of Duty Server'
   );
 
   initializeTV(
-    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_1'),
-    '/MLG/gtascreen.mp4',
-    [-1270, -425, -3400],
-    'GTA Server'
-  );
-
-  initializeTV(
-    findChildByName(model, 'p_int_monitor_c_extracam_LOD0'),
+    findChildByName(model, 'TV6'),
     '/MLG/ServerTBD.mp4',
-    [-1300, -425, -3900],
+    [723, -500, -3600], // Position
+    { x: 0, y: -0.6, z: 0 }, // Rotation
     'TBD Server'
   );
 
   initializeTV(
-    findChildByName(model, 'p_int_monitor_c_extracam_LOD0_2'),
-    '/MLG/CODServer.mp4',
-    [-1300, 530, -3900],
-    'Call of Duty Server'
+    findChildByName(model, 'TV7'),
+    '/MLG/gtascreen.mp4',
+    [420, -425, -2700], // Position
+    { x: 0, y: -0.5, z: 0 }, // Rotation
+    'GTA Server'
+  );
+
+  initializeTV(
+    findChildByName(model, 'TV8'),
+    '/MLG/minecraftscreen.mp4',
+    [600, -425, -2700], // Position
+    { x: 0, y: -0.5, z: 0 }, // Rotation
+    'Minecraft Server'
   );
 
   // Function to mute all TVs except the clicked one and pause the current video if clicked again
