@@ -177,6 +177,6 @@ img {
   transform: rotate(150deg);
   width: 72px;
   height: 93px;
-  background: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0e);
   cursor: pointer;
 }
