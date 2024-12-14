@@ -5,13 +5,14 @@
     height: 100%;
     object-fit: cover; /* Ensures the video covers the area without stretching */
     border-radius: 120px;
+    border: 20px solid rgb(22, 22, 22);
   }
   
   /* Tv Looping Gameplay Styles */
   .looping-video video {
-    width: 930px;
-    height: 780px;
+    width: 1000px;
+    height: 775px;
     object-fit: cover; /* Ensures the video covers the area without stretching */
-    border: 30px solid rgb(27, 27, 27);
-    border-radius: 60px;
+    border: 12px solid rgb(31, 26, 31);
+    border-radius: 24px;
   }
