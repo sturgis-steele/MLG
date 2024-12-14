@@ -33,41 +33,43 @@ export function loadLobbyContent(model) {
 
   // Initialize TVs with static content or website portals
   initializeTV(
-    findChildByName(model, 'TV5'),
+    findChildByName(model, 'TV6'),
     (() => {
       const staticDiv = document.createElement('div');
       staticDiv.className = 'lobby-content';
       staticDiv.innerHTML = '<img src="/MLG/screen1.png" alt="Lobby Image">';
       return staticDiv;
     })(),
-    [960, 525, -3900],
-    { x: 0, y: -.6, z: 0 }
+    [2500, 500, -1750],
+    { x: 0, y: -1.2, z: 0 }
   );
 
   initializeTV(
     findChildByName(model, 'TV6'),
     (() => {
       const staticDiv = document.createElement('div');
-      staticDiv.className = 'lobby-content2';
+      staticDiv.className = 'lobby-content';
       staticDiv.innerHTML = '<img src="/MLG/screen2.png" alt="Lobby Image">';
       return staticDiv;
     })(),
-    [723, -500, -3600],
-    { x: 0, y: -.6, z: 0 }
+    [2500, -415, -1750],
+    { x: 0, y: -1.2, z: 0 }
   );
 
   initializeTV(
     findChildByName(model, 'TV7'),
     (() => {
       const staticDiv = document.createElement('div');
-      staticDiv.className = 'lobby-content';
+      staticDiv.className = 'lobby-content2';
+      staticDiv.innerHTML = '<p>Wager Matches</p><p>Coming Soon</p>';
       return staticDiv;
     })(),
-    [0, 0, 0]
+    [1195, 450, -2050],
+    { x: 0, y: -0.9, z: 0 }
   );
 
   // Initialize a TV with a website portal and add an overlay for redirection
-  const websiteTV = findChildByName(model, 'TV8');
+  const websiteTV = findChildByName(model, 'TV7');
   initializeTV(
     websiteTV,
     (() => {
@@ -80,8 +82,8 @@ export function loadLobbyContent(model) {
 
       return websiteDiv;
     })(),
-    [420, -425, -2700],
-    { x: 0, y: -.5, z: 0 }
+    [1195, -380, -2050],
+    { x: 0, y: -0.9, z: 0 }
   );
 
   // Add an overlay for the clickable website TV

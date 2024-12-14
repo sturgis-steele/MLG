@@ -8,27 +8,36 @@
   
 /* Static image styles */
 .lobby-content img {
-    width: 875px;
-    height: 775px;
-    border: 30px solid rgb(54, 52, 50);
-    border-radius: 180px;
+    width: 675px;
+    height: 725px;
+    border: 6px solid rgb(20, 20, 20);
+    border-radius: 120px;
   }
 
 /* Static image styles */
 .lobby-content2 img {
     width: 875px;
     height: 930px;
-    border: 30px solid rgb(54, 52, 50);
-    border-radius: 180px;
+    border: 6px solid rgb(20, 20, 20);
+    border-radius: 120px;
     }
-      
+
+    .lobby-content2 p{
+        font-size: 75px;
+        color: white;
+        text-align: center;
+        font-family: Roboto, sans-serif;
+        text-shadow: -1px 0px 0 #000;
+        font-weight: bold;
+        width: 100%; 
+    }
   
   /* Website iframe container styles */
   .lobby-content iframe {
-    width: 750px;
-    height: 750px;
-    border: 15px solid rgb(53, 43, 49);
-    border-radius: 180px;
+    width: 625px;
+    height: 675px;
+    border: 6px solid rgb(20, 20, 20);
+    border-radius: 120px;
   }
   
   .lobby-content.website {
