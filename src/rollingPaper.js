@@ -128,7 +128,7 @@ export function initializeRollingPaperWithInteraction(model, scene, camera, rend
 
         // Wrap the button in a CSS3DObject and add to the scene
         exitButton = new CSS3DObject(exitDiv);
-        exitButton.position.set(10, 0, 99);
+        exitButton.position.set(40, 0, 12);
         exitButton.rotation.x = (Math.PI * 3) / 2; // Rotate the button
         scene.add(exitButton);
     }

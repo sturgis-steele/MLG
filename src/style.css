@@ -63,13 +63,13 @@ img {
 }
 
 /* Servers page styles */
-.servers-content {
-  font-family: Comic Sans MS;
-  display: flex;
-  justify-content: center;
+.servers-content video {
+  border: 0px;
+  border-radius: 180px;
+  object-fit: cover;
   align-items: center;
-  width: 100px; /* Adjust based on TV size */
-  height: 100px; /* Adjust based on TV size */
+  width: 1050px; /* Adjust based on TV size */
+  height: 900px; /* Adjust based on TV size */
 }
 
 .vault-content video {
@@ -174,9 +174,9 @@ img {
   justify-content: center;
   align-items: center;
   padding: 5px;
-  transform: rotate(180deg);
-  width: 20px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.6);
+  transform: rotate(150deg);
+  width: 72px;
+  height: 93px;
+  background: rgba(255, 255, 255, 0);
   cursor: pointer;
 }
