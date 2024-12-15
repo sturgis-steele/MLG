@@ -81,7 +81,7 @@ export function loadServersContent(model) {
 
   initializeTV(
     findChildByName(model, 'TV7'),
-    '/MLG/ServerTBD.mp4',
+    '/MLG/tbdscreen.mp4',
     [1195, -380, -2050], // Position
     { x: 0, y: -0.9, z: 0 }, // Rotation
     'TBD',
