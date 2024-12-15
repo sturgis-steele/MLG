@@ -8,6 +8,18 @@ export function setupLighting(scene) {
   pointLight.castShadow = true;
   scene.add(pointLight);
 
+  // Add light for gun under table
+  const gunLight = new THREE.PointLight(0xffffff, 30, 1000, 1.2);
+  gunLight.position.set(156, 27, 66);
+  scene.add(gunLight);
+
+  // add light for xbox420 
+  const xboxLight = new THREE.PointLight(0xffffff, 300, 30, .9);
+  xboxLight.position.set(21, 135, 177);
+  xboxLight.penumbra = 0;
+  scene.add(xboxLight);
+
+
   // Add a turquoise light for the gun
   const rayGunLight = new THREE.PointLight(0x00ffff, 1000, 30, 3);
   rayGunLight.position.set(135, 93, 76);

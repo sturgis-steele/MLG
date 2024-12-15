@@ -34,23 +34,26 @@
 
   /* General styles for static TV content */
 .tv-static-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
 
 /* Specific styles for TV7 */
-.tv6-content video {
-  width: 675px;
+.tv6-content {
+  width: 650px;
   height: 725px;
   object-fit: cover; /* Maintain aspect ratio without cropping */
-  border: 6px solid rgb(18, 18, 18);
+  border: 30px solid rgb(18, 18, 18);
   border-radius: 120px; /* Slightly rounded corners */
 }
 
 /* Specific styles for TV8 */
-.tv7-content video {
-  width: 625px;
+.tv7-content {
+  width: 600px;
   height: 675px;
   object-fit: cover; /* Fill container, might crop */
-  border: 12px solid rgb(18, 18, 18);
+  border: 30px solid rgb(18, 18, 18);
   border-radius: 120px; /* Smaller rounding */
 }
