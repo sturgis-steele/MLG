@@ -6,8 +6,13 @@ export function loadServersContent(model) {
   let currentPlayingVideo = null; // Track the currently playing video
 
   // Helper function to initialize a TV
-  function initializeTV(tv, videoSrc, position, rotation, title) {
-    if (!tv) return;
+  function initializeTV(tv, videoSrc, position, rotation = { x: 0, y: 0, z: 0 }, title, tvClass) {
+    if (!tv) {
+      console.error(`TV not found for ${tvClass}`);
+      return;
+    }
+
+    console.log(`Initializing TV: ${tvClass}`, tv);
 
     const videoElement = document.createElement('video');
     videoElement.setAttribute('autoplay', '');
@@ -20,7 +25,7 @@ export function loadServersContent(model) {
 
     // Create a container for the video and title
     const serverDiv = document.createElement('div');
-    serverDiv.className = 'servers-content';
+    serverDiv.className = `servers-content ${tvClass}`; // Apply general and specific class
 
     // Add the video to the container
     serverDiv.appendChild(videoElement);
@@ -46,21 +51,23 @@ export function loadServersContent(model) {
     tvs.push({ tv, videoElement });
   }
 
-  // Initialize TVs with content
+  // Initialize TVs with content and specific CSS classes for TV6 and TV7
   initializeTV(
     findChildByName(model, 'TV6'),
     '/MLG/CODServer.mp4',
     [2500, 500, -1750], // Position
     { x: 0, y: -1.2, z: 0 }, // Rotation
-    'Call of Duty Server'
+    'Call of Duty',
+    'tv6-content' // Specific CSS class for TV6
   );
 
   initializeTV(
     findChildByName(model, 'TV6'),
-    '/MLG/ServerTBD.mp4',
+    '/MLG/minecraftscreen.mp4',
     [2500, -415, -1750], // Position
     { x: 0, y: -1.2, z: 0 }, // Rotation
-    'TBD Server'
+    'Minecraft',
+    'tv6-content' // Specific CSS class for TV6
   );
 
   initializeTV(
@@ -68,15 +75,17 @@ export function loadServersContent(model) {
     '/MLG/gtascreen.mp4',
     [1195, 450, -2050], // Position
     { x: 0, y: -0.9, z: 0 }, // Rotation
-    'GTA Server'
+    'GTA V',
+    'tv7-content' // Specific CSS class for TV7
   );
 
   initializeTV(
     findChildByName(model, 'TV7'),
-    '/MLG/minecraftscreen.mp4',
+    '/MLG/ServerTBD.mp4',
     [1195, -380, -2050], // Position
     { x: 0, y: -0.9, z: 0 }, // Rotation
-    'Minecraft Server'
+    'TBD',
+    'tv7-content' // Specific CSS class for TV7
   );
 
   // Function to mute all TVs except the clicked one and pause the current video if clicked again

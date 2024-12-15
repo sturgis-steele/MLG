@@ -41,8 +41,8 @@
   }
   
   .lobby-content.website {
-    width: 100%; /* Adjust the width for the TV screen */
-    height: 100%; /* Adjust the height for the TV screen */
+    width: 675px; /* Adjust the width for the TV screen */
+    height: 725px; /* Adjust the height for the TV screen */
     overflow: hidden; /* Ensure no scrollbars */
   }
   
@@ -51,8 +51,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 675px;
+    height: 725px;
     cursor: pointer;
     background: rgba(0, 0, 0, 0); /* Fully transparent */
   }

@@ -87,7 +87,7 @@ export function loadLobbyContent(model) {
   );
 
   // Add an overlay for the clickable website TV
-  initializeTVOverlay(websiteTV, [600, -425, -2700], 'https://mlgedit.com/');
+  initializeTVOverlay(websiteTV, [1195, -380, -2050], 'https://mlgedit.com/');
 }
 
 // Helper function to find child by name

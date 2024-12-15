@@ -7,7 +7,12 @@ export function loadVaultContent(model) {
 
   // Helper function to initialize a TV
   function initializeTV(tv, videoSrc, position, rotation = { x: 0, y: 0, z: 0 }, tvClass) {
-    if (!tv) return;
+    if (!tv) {
+      console.error(`TV not found for ${tvClass}`);
+      return;
+    }
+  
+    console.log(`Initializing TV: ${tvClass}`, tv);
   
     const videoElement = document.createElement('video');
     videoElement.setAttribute('autoplay', '');
@@ -30,7 +35,15 @@ export function loadVaultContent(model) {
   
     // Add click event listener to play audio for this TV
     videoElement.addEventListener('click', () => {
+      console.log('Click event triggered for:', videoElement);
       playAudioForTV(videoElement);
+    });
+  
+    // Test video playback
+    videoElement.play().then(() => {
+      console.log('Video is playing:', videoElement);
+    }).catch((error) => {
+      console.error('Error playing video:', error);
     });
   
     // Store TV and video reference
@@ -40,34 +53,34 @@ export function loadVaultContent(model) {
 
   // Initialize TVs with content and specific CSS classes
   initializeTV(
-    findChildByName(model, 'TV5'),
+    findChildByName(model, 'TV6'),
     '/MLG/IMG_0747.MP4',
-    [960, 525, -3900], // Position
-    { x: 0, y: -0.6, z: 0 }, // Rotation
+    [2500, 500, -1750], // Position
+    { x: 0, y: -1.2, z: 0 }, // Rotation
     'vault-tv5' // Specific CSS class
   );
 
   initializeTV(
     findChildByName(model, 'TV6'),
     '/MLG/IMG_0749.MP4',
-    [420, -300, -2100], // Position
-    { x: 0, y: -0.6, z: 0 }, // Rotation
+    [2500, -415, -1750], // Position
+    { x: 0, y: -1.2, z: 0 }, // Rotation
     'vault-tv6' // Specific CSS class
   );
 
   initializeTV(
     findChildByName(model, 'TV7'),
     '/MLG/IMG_0746.MP4',
-    [2100, 0, -2700], // Position
-    { x: 0, y: -0.5, z: 0 }, // Rotation
+    [1195, 450, -2050], // Position
+    { x: 0, y: -0.9, z: 0 }, // Rotation
     'vault-tv7' // Specific CSS class
   );
 
   initializeTV(
-    findChildByName(model, 'TV8'),
+    findChildByName(model, 'TV7'),
     '/MLG/IMG_0743.MP4',
-    [600, -425, -2700], // Position
-    { x: 0, y: -0.5, z: 0 }, // Rotation
+    [1195, -380, -2050], // Position
+    { x: 0, y: -0.9, z: 0 }, // Rotation
     'vault-tv8' // Specific CSS class
   );
 

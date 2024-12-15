@@ -5,17 +5,44 @@ import './css/musicPlayer.css';
 export function initializeMusicPlayerWithInteraction(model, scene, camera, renderer) {
   const audio = document.createElement('audio');
   const songs = [
-    '/MLG/custom-music.mp3',
-    '/MLG/BLACK OPS 2 - OFFICIAL MULTIPLAYER MENU THEME SONG (HD).mp3',
-    '/MLG/Call of Duty 4 Theme.mp3',
-    '/MLG/Call of Duty Black Ops Menu Ambience.mp3',
-    '/MLG/Call of Duty Black Ops Zombies Main Menu Theme.mp3',
-    '/MLG/Call of Duty Modern Warfare 3 Multiplayer menu music.mp3',
-    '/MLG/Call of Duty_ Modern Warfare 2 - OpFor Theme (Chain of Command).mp3',
-    '/MLG/Call of Duty_ Modern Warfare 3 - Multiplayer Menu Theme Music.mp3',
-    '/MLG/COD Black Ops 2 Main Menu Theme (In Game original).mp3',
-    '/MLG/MW2 Multiplayer Menu Soundtrack.mp3',
+    '/MLG/music/Dr. Dre - The Next Episode (San Holo Remix).mp3',
+    '/MLG/music/Alan Walker - Fade.m4a',
+    '/MLG/music/Blackbear - Idfc (Tarro Remix).mp3',
+    '/MLG/music/C418 - Wet Hands (Trap Remix).mp3',
+    '/MLG/music/Calvin Harris - Outside ft. Ellie Goulding (Savagez Remix).mp3',
+    '/MLG/music/Cartoon, Jéja - Why We Lose (feat. Coleman Trapp) _ DnB _ NCS - Copyright Free Music.mp3',
+    '/MLG/music/Deaf Kev - Invincible.mp3',
+    '/MLG/music/Different Heaven & EH!DE - My Heart [NCS].mp3',
+    '/MLG/music/Different Heaven & EH!DE - My Heart _ Drumstep _ NCS - Copyright Free Music.mp3',
+    '/MLG/music/Dr - I Keep Holding On (My Hope Will Never Die).mp3',
+    '/MLG/music/Galantis - Runaway (U & I) (Gioni Remix).mp3',
+    '/MLG/music/Itro & Tobu - Cloud 9.mp3',
+    '/MLG/music/Jetta - I\'d Love to Change the World (Matstubs Remix).mp3',
+    '/MLG/music/Jo Cohen & Sex Whales - We Are _ Future Bass _ NCS - Copyright Free Music.mp3',
+    '/MLG/music/Kevin MacLeod ~ Fluffing a Duck.mp3',
+    '/MLG/music/Kevin MacLeod ~ Investigations.mp3',
+    '/MLG/music/Kevin MacLeod ~ Monkeys Spinning Monkeys.mp3',
+    '/MLG/music/Kevin MacLeod ~ Run Amok.mp3',
+    '/MLG/music/Kevin MacLeod ~ Scheming Weasel (faster version).mp3',
+    '/MLG/music/Lenka - Blue Skies (REVOKE Remix).mp3',
+    '/MLG/music/Lost Sky - Fearless pt.II (feat. Chris Linton) _ Trap _ NCS - Copyright Free Music.mp3',
+    '/MLG/music/OMFG - Hello.mp3',
+    '/MLG/music/OMFG - Hello_part1_2.mp3',
+    '/MLG/music/San Holo - We Rise.mp3',
+    '/MLG/music/Ship Wrek & Zookeepers - Ark (FaZe Banks Intro Song 2017).mp3',
+    '/MLG/music/Syn Cole - Feel Good _ Future House _ NCS - Copyright Free Music.mp3',
+    '/MLG/music/THATS RIGHT GET NOSCOPED - Sound Effect (HD).mp3',
+    '/MLG/music/The Chainsmokers - Don\'t Let Me Down (Illenium Remix).mp3',
+    '/MLG/music/The Happy Troll  (song) - by D1ofAquavibe.mp3',
+    '/MLG/music/The Party Troll (song) by D1ofAquavibe.mp3',
+    '/MLG/music/TheFatRat - Unity.mp3',
+    '/MLG/music/TheFatRat - Xenogenesis (Outro Song).mp3',
+    '/MLG/music/Tobu - Infectious (Original Mix).mp3',
+    '/MLG/music/Undertale - Megalovania.mp3',
+    '/MLG/music/Vicetone - Nevada (feat. Cozi Zuehlsdorff) [Monstercat Official Music Video].mp3',
+    '/MLG/music/-Yakety Sax- Music.mp3'
   ];
+  
   let currentSongIndex = 0;
 
   // Set initial audio properties
@@ -63,42 +90,21 @@ export function initializeMusicPlayerWithInteraction(model, scene, camera, rende
   // Create a div element for the text
   const gramophoneDiv = document.createElement('div');
   gramophoneDiv.innerHTML = `
-    <div class="gramophone-interaction">
+    <div class= "gramophone-interaction">
     </div>
   `;
   
   // Wrap the div in a CSS3DObject
   const gramophoneObject = new CSS3DObject(gramophoneDiv);
-  gramophoneObject.position.set(0, 150, 0); // Adjust position as needed
+  gramophoneObject.position.set(30, 0, 30); // Adjust position as needed
+  gramophoneObject.rotation.set(Math.PI / 2, Math.PI / 2, 0); // Rotate as needed
   
-
-  // Adjust rotation if needed to face the camera
-  gramophoneObject.rotation.y = Math.PI; // Example: rotate 180 degrees
-
-  // Add the CSS3DObject to the gramophone
   gramophone.add(gramophoneObject);
 
+  
   // Add a click event listener to the text
   gramophoneDiv.addEventListener('click', () => {
     console.log('Gramophone clicked! Changing song...');
-    switchToNextSong();
-
-  });
-
-  // Create the second div element for the side text
-  const sideDiv = document.createElement('div');
-  sideDiv.innerHTML = `
-    <div class="gramophone-interaction" style="width: 81px">
-    </div>
-  `;
-
-  const sideObject = new CSS3DObject(sideDiv);
-  sideObject.position.set(0, 150, 90); // Position on the side of the gramophone
-  sideObject.rotation.y = Math.PI / 2; // Rotate 90 degrees to face outward
-  gramophone.add(sideObject);
-
-  sideDiv.addEventListener('click', () => {
-    console.log('Side of gramophone clicked! Changing song...');
     switchToNextSong();
   });
 }

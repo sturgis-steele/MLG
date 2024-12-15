@@ -23,9 +23,9 @@ export function initializeTVNavMenu(model, clearTVs) {
     menuDiv.innerHTML = `
       <div class="nav-tv">
         <div class="menu-item" data-target="lobby">Lobby</div>
+        <div class="menu-item" data-target="clan">Clan</div>
         <div class="menu-item" data-target="servers">Servers</div>
         <div class="menu-item" data-target="vault">Vault</div>
-        <div class="menu-item" data-target="clan">Clan</div>
       </div>
     `;
 
@@ -66,49 +66,54 @@ export function initializeTVNavMenu(model, clearTVs) {
 
 // Initialize TVs with static videos before navigation
 function initializeStaticTVs(model) {
-  const staticVideoSrc = '/MLG/TV_static1.mp4'; // Default video path
-  const tvNames = ['TV6', 'TV6', 'TV7', 'TV7'];
+  // Define video paths
+  const staticVideoSrc1 = '/MLG/TV_static1.mp4'; // Default static video
+  const staticVideoSrc2 = '/MLG/TV_static.mp4'; // New static video
+  
+  // Define TV names, positions, and rotations
+  const tvNames = ['TV6', 'TV6','TV7', 'TV7'];
   const positions = [
-    [2500, 500, -1750],
-    [2500, -415, -1750],
-    [1195, 450, -2050],
-    [1195, -380, -2050],
+    [2500, 500, -1750],  // Position for TV6 (top left)
+    [2500, -415, -1750], // Position for TV6 (bottom left)
+    [1195, 450, -2050],  // Position for TV7 (top right)
+    [1195, -380, -2050], // Position for TV7 (bottom right)
   ];
   const rotations = [
-    { x: 0, y: -1.2, z: 0 }, // Rotation for TV6 (first instance)
-    { x: 0, y: -1.2, z: 0 }, // Rotation for TV6 (second instance)
-    { x: 0, y: -0.9, z: 0 }, // Rotation for TV7 (first instance)
-    { x: 0, y: -0.9, z: 0 }, // Rotation for TV7 (second instance)
+    { x: 0, y: -1.2, z: 0 }, // Rotation for TV6 (top left)
+    { x: 0, y: -1.2, z: 0 }, // Rotation for TV6 (bottom left)
+    { x: 0, y: -0.9, z: 0 }, // Rotation for TV7 (top right)
+    { x: 0, y: -0.9, z: 0 }, // Rotation for TV7 (bottom right)
   ];
 
   tvNames.forEach((tvName, index) => {
     const tv = findChildByName(model, tvName);
     if (tv) {
       const videoElement = document.createElement('video');
-      videoElement.src = staticVideoSrc;
+      // Assign static video based on index
+      videoElement.src = index === 0 || index === 3 ? staticVideoSrc2 : staticVideoSrc1;
       videoElement.setAttribute('autoplay', '');
       videoElement.setAttribute('loop', '');
       videoElement.muted = true; // Start muted
-  
+      
       // Assign specific CSS class based on TV name
       const cssClass = tvName === 'TV6' ? 'tv6-content' : tvName === 'TV7' ? 'tv7-content' : '';
-  
+      
       const videoDiv = document.createElement('div');
       videoDiv.className = `tv-static-content ${cssClass}`; // Apply class dynamically
       videoDiv.appendChild(videoElement);
-  
+      
       const videoObject = new CSS3DObject(videoDiv);
       videoObject.position.set(...positions[index]); // Set position
       videoObject.rotation.set(rotations[index].x, rotations[index].y, rotations[index].z); // Set rotation
       tv.add(videoObject);
     }
   });
-  
 }
+
 
 // Helper function to clear previous content from TVs
 export function clearTVs(model) {
-  const tvNames = ['TV6', 'TV7', 'TV6', 'TV7'];
+  const tvNames = ['TV6', 'TV6', 'TV7', 'TV7'];
 
   tvNames.forEach((tvName) => {
     const tv = findChildByName(model, tvName);
