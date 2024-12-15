@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import { pauseMusic, resumeMusic } from './musicPlayer.js';
 import { loadLobbyContent } from './lobby.js';
 import { loadVaultContent } from './vault.js';
 import { loadServersContent } from './servers.js';
@@ -52,6 +53,7 @@ export function initializeTVNavMenu(model, clearTVs) {
         }
         if (target === 'vault') {
           loadVaultContent(model);
+          pauseMusic(); // Pause music playback
         }
         if (target === 'clan') {
           loadClanContent(model);
@@ -123,6 +125,7 @@ export function clearTVs(model) {
         const child = tv.children[i];
         if (child.isCSS3DObject) {
           tv.remove(child);
+          resumeMusic(); // Resume music playback
         }
       }
     }

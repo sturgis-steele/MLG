@@ -1,10 +1,15 @@
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import './css/vault.css';
+import { pauseMusic, resumeMusic, audio } from './musicPlayer.js';
 
 export function loadVaultContent(model) {
   const tvs = []; // Array to store references to all TVs and their videos
   let currentPlayingVideo = null; // Track the currently playing video
-
+  let isVaultPlaying = false; // Track if any vault video is playing
+  
+  // Pause music when entering the vault
+  console.log('Entering Vault: Pausing Music...');
+  
   // Helper function to initialize a TV
   function initializeTV(tv, videoSrc, position, rotation = { x: 0, y: 0, z: 0 }, tvClass) {
     if (!tv) {
@@ -91,6 +96,13 @@ export function loadVaultContent(model) {
       selectedVideo.muted = true;
       selectedVideo.pause();
       currentPlayingVideo = null; // Reset the current playing video
+
+      if (!tvs.some(({ videoElement }) => !videoElement.paused)) {
+        // If no other videos are playing, resume music
+        console.log('All videos paused. Resuming music...');
+        resumeMusic();
+      }
+
     } else {
       // Otherwise, play the selected video and pause all others
       tvs.forEach(({ videoElement }) => {
@@ -98,6 +110,7 @@ export function loadVaultContent(model) {
           videoElement.muted = false; // Unmute the selected video
           videoElement.play(); // Ensure it plays
           currentPlayingVideo = selectedVideo; // Update the current playing video
+          pauseMusic(); // Pause music when a video is playing
         } else {
           videoElement.muted = true; // Mute all others
           videoElement.pause(); // Pause muted videos
