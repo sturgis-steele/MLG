@@ -108,7 +108,7 @@ function initializeStaticTVs(model) {
 
 // Helper function to clear previous content from TVs
 export function clearTVs(model) {
-  const tvNames = ['TV6', 'TV6', 'TV7', 'TV7'];
+  const tvNames = ['TV6', 'TV7', 'TV6', 'TV7'];
 
   tvNames.forEach((tvName) => {
     const tv = findChildByName(model, tvName);

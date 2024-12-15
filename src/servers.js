@@ -48,34 +48,34 @@ export function loadServersContent(model) {
 
   // Initialize TVs with content
   initializeTV(
-    findChildByName(model, 'TV5'),
+    findChildByName(model, 'TV6'),
     '/MLG/CODServer.mp4',
-    [960, 525, -3900], // Position
-    { x: 0, y: -0.6, z: 0 }, // Rotation
+    [2500, 500, -1750], // Position
+    { x: 0, y: -1.2, z: 0 }, // Rotation
     'Call of Duty Server'
   );
 
   initializeTV(
     findChildByName(model, 'TV6'),
     '/MLG/ServerTBD.mp4',
-    [723, -500, -3600], // Position
-    { x: 0, y: -0.6, z: 0 }, // Rotation
+    [2500, -415, -1750], // Position
+    { x: 0, y: -1.2, z: 0 }, // Rotation
     'TBD Server'
   );
 
   initializeTV(
     findChildByName(model, 'TV7'),
     '/MLG/gtascreen.mp4',
-    [420, -425, -2700], // Position
-    { x: 0, y: -0.5, z: 0 }, // Rotation
+    [1195, 450, -2050], // Position
+    { x: 0, y: -0.9, z: 0 }, // Rotation
     'GTA Server'
   );
 
   initializeTV(
-    findChildByName(model, 'TV8'),
+    findChildByName(model, 'TV7'),
     '/MLG/minecraftscreen.mp4',
-    [600, -425, -2700], // Position
-    { x: 0, y: -0.5, z: 0 }, // Rotation
+    [1195, -380, -2050], // Position
+    { x: 0, y: -0.9, z: 0 }, // Rotation
     'Minecraft Server'
   );
 

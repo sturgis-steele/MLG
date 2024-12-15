@@ -10,27 +10,27 @@
   
   /* Telegram-specific styles */
   .clan-content.telegram img {
-    width: 93px;
+    width: 530px;
     height: auto;
   }
   
   /* YouTube-specific styles */
   .clan-content.youtube img {
-    width: 100px;
+    width: 540px;
     height: auto;
   }
   
   /* Discord-specific styles */
   .clan-content.discord img {
-    width: 100px;
+    width: 560px;
     height: auto;
   }
   
   /* Twitter-specific styles */
   .clan-content.twitter img {
-    width: 87px;
+    width: 450px;
     height: auto;
     border: 1px solid transparent;
-    border-radius: 12px;
+    border-radius: 45px;
   }
   
