@@ -1,7 +1,7 @@
 import './css/style.css';
+import './css/loadingScreen.css';
 import * as THREE from 'three';
 import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
-import { initializeLoadingScreen, showLoadingScreen, hideLoadingScreen } from './loadingScreen.js';
 import { setupLighting } from './lighting.js';
 import { initializeHitmarker } from './hitmarker.js';
 import { initializeCameraControls } from './cameraControls.js';
@@ -13,10 +13,6 @@ const clock = new THREE.Clock();
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
-
-// Initialize the loading screen
-const loadingScreen = initializeLoadingScreen();
-showLoadingScreen(loadingScreen);
 
 // Setup lighting
 setupLighting(scene);
@@ -57,7 +53,7 @@ window.addEventListener('resize', () => {
 initializeHitmarker();
 
 // Call Blender rendering function
-loadBlenderScene(scene, hideLoadingScreen, loadingScreen, camera, renderer);
+loadBlenderScene(scene, camera, renderer);
 
 
 // Animation loop

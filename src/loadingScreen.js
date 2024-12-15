@@ -1,8 +1,53 @@
 import './css/loadingScreen.css';
 import { enableCamera, disableCamera } from './cameraControls.js';
 
+// Start screen
+export function initializeStartScreen(onStartCallback) {
+  const startScreen = document.createElement('div');
+  startScreen.id = 'start-screen'; // Style this in your CSS
+  startScreen.innerHTML = `
+    <a class="button" href="#">Press me!</a>
+  `;
+  document.body.appendChild(startScreen);
+
+  // Attach event listener to the button
+  const startButton = startScreen.querySelector('.button');
+  startButton.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    // Add the 'pressed' class to simulate button press
+    startButton.classList.add('pressed');
+
+    // Delay hiding the start screen and showing the loading screen
+    setTimeout(() => {
+      hideStartScreen(startScreen); // Hide the start screen
+
+      // Initialize and show the loading screen
+      const loadingScreen = initializeLoadingScreen();
+      showLoadingScreen(loadingScreen);
+
+      // Call the callback to load the Blender scene
+      if (onStartCallback) {
+        onStartCallback(loadingScreen);
+      }
+    }, 400); // Allow button press animation to play
+  });
+
+  return startScreen; // Return the start screen for further manipulation
+}
+
+export function showStartScreen(startScreen) {
+  startScreen.style.display = 'flex'; // Show the start screen
+  disableCamera(); // Disable camera movement
+}
+
+export function hideStartScreen(startScreen) {
+  startScreen.style.display = 'none'; // Hide the start screen
+  enableCamera(); // Enable camera movement
+}
+
+// Load screen
 export function initializeLoadingScreen() {
-  // Create the loading screen element dynamically
   const loadingScreen = document.createElement('div');
   loadingScreen.id = 'loading-screen';
   loadingScreen.innerHTML = `
@@ -22,7 +67,5 @@ export function showLoadingScreen(loadingScreen) {
 
 export function hideLoadingScreen(loadingScreen) {
   loadingScreen.style.display = 'none';
-  enableCamera(); // Ensure camera movement is disabled
+  enableCamera(); // Re-enable camera movement
 }
-
-  
