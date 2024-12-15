@@ -3,6 +3,7 @@ import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import './css/musicPlayer.css';
 
 let audio = null; // Declare audio at the module level
+let currentSongIndex = 0;
 
 export function initializeMusicPlayerWithInteraction(model, scene, camera, renderer) {
   if (!audio) {
@@ -46,13 +47,28 @@ export function initializeMusicPlayerWithInteraction(model, scene, camera, rende
       '/MLG/music/-Yakety Sax- Music.mp3'
     ];
     
-    let currentSongIndex = 0;
-
+    shuffleSongs();
+    
     // Set initial audio properties
     audio.src = songs[currentSongIndex];
-    audio.loop = true;
+    audio.loop = false;
     audio.volume = 0.5;
     document.body.appendChild(audio);
+    
+    // Attach event listener to switch to the next song when the current one ends
+    audio.addEventListener('ended', switchToNextSong);
+
+    // Shuffle function
+    function shuffleSongs() {
+      // Fisher-Yates shuffle algorithm
+      for (let i = songs.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [songs[i], songs[j]] = [songs[j], songs[i]]; // Swap elements
+      }
+      currentSongIndex = 0; // Reset index to the first shuffled song
+      console.log('Playlist shuffled:', songs);
+    }
+
 
     // Attempt to autoplay the audio
     audio.play().catch(() => {

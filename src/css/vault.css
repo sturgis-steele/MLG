@@ -14,7 +14,7 @@
 .vault-tv5 {
   width: 675px;
   height: 725px;
-  border: 6px solid rgb(20, 20, 20);
+  border: 12px solid rgb(20, 20, 20);
   object-fit: cover;
   border-radius: 120px;
 }
@@ -22,7 +22,7 @@
 .vault-tv6 {
   width: 675px;
   height: 725px;
-  border: 6px solid rgb(20, 20, 20);
+  border: 12px solid rgb(20, 20, 20);
   object-fit: cover;
   border-radius: 120px;
 }
@@ -30,7 +30,7 @@
 .vault-tv7 {
   width: 625px;
   height: 675px;
-  border: 6px solid rgb(20, 20, 20);
+  border: 12px solid rgb(20, 20, 20);
   object-fit: cover;
   border-radius: 120px;
 }
@@ -38,7 +38,7 @@
 .vault-tv8 {
   width: 625px;
   height: 675px;
-  border: 6px solid rgb(20, 20, 20);
+  border: 12px solid rgb(20, 20, 20);
   object-fit: cover;
   border-radius: 120px;
 }

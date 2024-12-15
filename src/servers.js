@@ -54,7 +54,7 @@ export function loadServersContent(model) {
   // Initialize TVs with content and specific CSS classes for TV6 and TV7
   initializeTV(
     findChildByName(model, 'TV6'),
-    '/MLG/CODServer.mp4',
+    '/MLG/blackopsscreen.mp4',
     [2500, 500, -1750], // Position
     { x: 0, y: -1.2, z: 0 }, // Rotation
     'Call of Duty',
