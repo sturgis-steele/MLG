@@ -70,8 +70,8 @@ function initializePhoneControls(camera) {
       const deltaX = touchX - previousTouchPosition.x;
       const deltaY = touchY - previousTouchPosition.y;
 
-      yaw -= deltaX * 0.002; // Adjust sensitivity
-      pitch -= deltaY * 0.002;
+      yaw -= deltaX * 0.006; // Adjust sensitivity
+      pitch -= deltaY * 0.006;
 
       // Clamp yaw and pitch to their respective limits
       yaw = Math.max(yawLimitLeft, Math.min(yawLimitRight, yaw));
