@@ -13,20 +13,6 @@ export function initializeStartScreen(onStartCallback) {
     </div>
   `;
 
-  // Create 3D border elements dynamically
-  //const borders = [
-  //  { className: 'border-top', styles: {} },
-  //  { className: 'border-left', styles: {} },
-  //  { className: 'border-bottom', styles: {} },
-  //  { className: 'border-right', styles: {} }
-  //];
-
-  //borders.forEach((border) => {
-  //  const borderElement = document.createElement('div');
-  //  borderElement.className = `border-segment ${border.className}`;
-  //  startScreen.appendChild(borderElement);
-  //});
-
   document.body.appendChild(startScreen);
 
   // Attach event listener to the button
@@ -69,11 +55,22 @@ export function hideStartScreen(startScreen) {
 export function initializeLoadingScreen() {
   const loadingScreen = document.createElement("div");
   loadingScreen.id = "loading-screen";
+
+  // Detect device type
+  const isPhone = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  // Choose the video source based on the device
+  const videoSrc = isPhone
+    ? "/MLG/dankloadscreen_phone.mp4" // Video for phones
+    : "/MLG/dankloadscreen2.mp4"; // Video for desktops and tablets
+
+  // Set up the video element
   loadingScreen.innerHTML = `
     <video playsinline autoplay muted loop>
-      <source src="/MLG/dankloadscreen2.mp4" type="video/mp4">
+      <source src="${videoSrc}" type="video/mp4">
     </video>
   `;
+
   document.body.appendChild(loadingScreen);
 
   return loadingScreen; // Return the loading screen for further manipulation
