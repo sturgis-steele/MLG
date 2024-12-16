@@ -173,16 +173,16 @@ html {
 @media screen and (max-width: 768px) {
   #start-screen {
     flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 30%;
+    justify-content: center;
     background: linear-gradient(to right, #e35d5b, #e53935);
   }
 
   .disclaimer {
     width: 80%;
     font-size: 18px;
-    margin-top: 30px;
-  }
+    bottom: 20px;
+    margin-bottom: 10px;
+   }
 
   .button {
     font-size: 60px;
@@ -206,18 +206,19 @@ html {
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   #start-screen {
     flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 30%;
+    justify-content: center;
     background: linear-gradient(to right, #e53935, #e35d5b);
   }
 
   .disclaimer {
     width: 70%;
     font-size: 24px;
-    padding-top: 0;
+    margin-bottom: 20px;
   }
 
   .button {
+    position: fixed;
+    margin: auto;
     font-size: 70px;
     padding: 18px 36px;
   }
