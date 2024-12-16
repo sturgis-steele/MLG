@@ -54,8 +54,8 @@ function initializePhoneControls(camera) {
   pitch = initialEuler.x; // Initial vertical rotation (pitch)
 
   // Define rotation limits
-  const yawLimitLeft = yaw - Math.PI / 4; // 45 degrees to the left of the starting yaw
-  const yawLimitRight = yaw + Math.PI / 4; // 45 degrees to the right of the starting yaw
+  const yawLimitLeft = yaw - Math.PI / 2; // 45 degrees to the left of the starting yaw
+  const yawLimitRight = yaw + Math.PI / 2; // 45 degrees to the right of the starting yaw
   const pitchLimitUp = Math.PI / 2 - 0.1; // Slightly less than 90 degrees up
   const pitchLimitDown = -Math.PI / 2 + 0.1; // Slightly more than -90 degrees down
 
