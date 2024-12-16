@@ -2,6 +2,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { initializeAnimationMixer } from './animationManager.js';
 import { initializeMusicPlayerWithInteraction } from './musicPlayer.js';
+import { initializeGrenade } from './grenade.js';
 import { loadLiveData } from './livePriceTV.js';
 import { initializeStartScreen, hideLoadingScreen } from './loadingScreen.js';
 import { initializeTVNavMenu, clearTVs } from './tvNavMenu.js';
@@ -32,6 +33,7 @@ export function loadBlenderScene(scene, camera, renderer) {
         // Initialize various components and interactions
         initializeAnimationMixer(model, gltf.animations);
         initializeMusicPlayerWithInteraction(model, scene, camera, renderer);
+        initializeGrenade(scene);
         loadLiveData(model);
         initializeTVNavMenu(model, clearTVs);
         initializeLoopingVideoTVs(model);

@@ -31,8 +31,6 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
 
-// Set the cursor style to crosshair
-document.body.style.cursor = 'crosshair';
 
 // Create CSS3DRenderer for HTML menu overlay
 const cssRenderer = new CSS3DRenderer();

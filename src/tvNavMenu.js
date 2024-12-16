@@ -23,10 +23,10 @@ export function initializeTVNavMenu(model, clearTVs) {
     const menuDiv = document.createElement('div');
     menuDiv.innerHTML = `
       <div class="nav-tv">
-        <div class="menu-item" data-target="lobby">Lobby</div>
-        <div class="menu-item" data-target="clan">Clan</div>
-        <div class="menu-item" data-target="servers">Servers</div>
-        <div class="menu-item" data-target="vault">Vault</div>
+        <div class="menu-item" data-target="lobby">LOBBY</div>
+        <div class="menu-item" data-target="clan">CLAN</div>
+        <div class="menu-item" data-target="servers">SERVERS</div>
+        <div class="menu-item" data-target="vault">VAULT</div>
       </div>
     `;
 

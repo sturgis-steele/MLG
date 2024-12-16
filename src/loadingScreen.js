@@ -5,9 +5,25 @@ import { enableCamera, disableCamera } from './cameraControls.js';
 export function initializeStartScreen(onStartCallback) {
   const startScreen = document.createElement('div');
   startScreen.id = 'start-screen'; // Style this in your CSS
+  // Add the main content for the start screen
   startScreen.innerHTML = `
-    <a class="button" href="#">Press me!</a>
+    <a class="button" href="#">START MATCH</a>
   `;
+
+  // Create 3D border elements dynamically
+  //const borders = [
+  //  { className: 'border-top', styles: {} },
+  //  { className: 'border-left', styles: {} },
+  //  { className: 'border-bottom', styles: {} },
+  //  { className: 'border-right', styles: {} }
+  //];
+
+  //borders.forEach((border) => {
+  //  const borderElement = document.createElement('div');
+  //  borderElement.className = `border-segment ${border.className}`;
+  //  startScreen.appendChild(borderElement);
+  //});
+
   document.body.appendChild(startScreen);
 
   // Attach event listener to the button

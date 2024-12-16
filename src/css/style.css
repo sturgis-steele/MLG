@@ -6,6 +6,8 @@ html, body {
   overflow: hidden; /* Prevent scrollbars during loading */
   background: black;
   font-family: Comic Sans MS;
+  cursor: crosshair;
+/*  cursor: url('/MLG/snipercursor.png'), auto; */
 }
 
 /* Canvas Styles */
