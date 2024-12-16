@@ -96,7 +96,7 @@ export function loadVaultContent(model) {
     '/MLG/Fazemontage4.mp4',
     [807, 970, 3100], // Position
     { x: 0, y: 0, z: 0 }, // Rotation
-    'vault-tv8-1' // Specific CSS class
+    'vault-tv8' // Specific CSS class
   );
 
   initializeTV(
@@ -104,7 +104,7 @@ export function loadVaultContent(model) {
     '/MLG/Fazesmontage2.mp4',
     [807, -140, 3100], // Position
     { x: 0, y: 0, z: 0 }, // Rotation
-    'vault-tv8-2' // Specific CSS class
+    'vault-tv8' // Specific CSS class
   );
 
   // Function to mute all TVs except the clicked one and pause the current video if clicked again
@@ -136,6 +136,29 @@ export function loadVaultContent(model) {
       });
     }
   }
+}
+
+// Function to clear vault TVs
+export function clearVaultTVs() {
+  console.log('Clearing specific vault TVs...');
+
+  // List of video sources to clear
+  const videoSourcesToClear = [
+    '/MLG/Fazemontage4.mp4', // Replace with the actual path to the video
+    '/MLG/Fazesmontage2.mp4'  // Add more video sources as needed
+  ];
+
+  // Select all video elements in the DOM
+  const videoElements = document.querySelectorAll('video');
+
+  videoElements.forEach((videoElement) => {
+    if (videoSourcesToClear.includes(videoElement.src)) {
+      console.log(`Clearing video: ${videoElement.src}`);
+      videoElement.pause(); // Stop the video
+      videoElement.currentTime = 0; // Reset video to the beginning
+      videoElement.parentElement.style.display = 'none'; // Hide the parent element
+    }
+  });
 }
 
 // Helper function to find child by name

@@ -2,13 +2,13 @@ import * as THREE from 'three';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { pauseMusic, resumeMusic } from './musicPlayer.js';
 import { loadLobbyContent } from './lobby.js';
-import { loadVaultContent } from './vault.js';
+import { loadVaultContent, clearVaultTVs } from './vault.js';
 import { loadServersContent } from './servers.js';
 import { loadClanContent } from './clan.js';
 import './css/tvNavMenu.css';
 
 // Function to create and attach the TV navigation menu
-export function initializeTVNavMenu(model, clearTVs) {
+export function initializeTVNavMenu(model, clearTVs, clearVaultTVs) {
   let tvNavMenu;
 
   // Locate the TV for the navigation menu
@@ -47,9 +47,11 @@ export function initializeTVNavMenu(model, clearTVs) {
         // Load the corresponding content
         if (target === 'lobby') {
           loadLobbyContent(model);
+          clearVaultTVs(); 
         }
         if (target === 'servers') {
           loadServersContent(model);
+          clearVaultTVs(); // Clear vault content
         }
         if (target === 'vault') {
           loadVaultContent(model);
@@ -57,6 +59,7 @@ export function initializeTVNavMenu(model, clearTVs) {
         }
         if (target === 'clan') {
           loadClanContent(model);
+          clearVaultTVs(); 
         }
       });
     });
