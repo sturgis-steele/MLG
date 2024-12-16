@@ -3850,7 +3850,7 @@ void main() {
         Failed to fetch data.<br>Please wait a moment.</br>
       </p>`}}async function Vc(s){try{const e=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=360noscope420blazeit&vs_currencies=usd",{headers:{accept:"application/json"}});if(!e.ok)throw new Error(`HTTP error! status: ${e.status}`);const n=(await e.json())["360noscope420blazeit"].usd.toFixed(4);s.innerHTML=`
       <p class="price-text">
-        MLG Price: <br>$${n.toLocaleString()}</br>
+        Price: <br>$${n.toLocaleString()}</br>
       </p>`}catch(e){console.error("Error fetching price data:",e),s.innerHTML=`
       <p style="font-size: 3px; color: red; text-align: center; margin: 0;">
         Failed to fetch price data.<br>Please try again later.</br>

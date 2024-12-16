@@ -113,7 +113,7 @@ async function fetchLivePrice(element) {
 
     element.innerHTML = `
       <p class="price-text">
-        MLG Price: <br>$${price.toLocaleString()}</br>
+        Price: <br>$${price.toLocaleString()}</br>
       </p>`;
   } catch (error) {
     console.error('Error fetching price data:', error);
