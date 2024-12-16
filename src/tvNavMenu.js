@@ -95,6 +95,8 @@ function initializeStaticTVs(model) {
       videoElement.src = index === 0 || index === 3 ? staticVideoSrc2 : staticVideoSrc1;
       videoElement.setAttribute('autoplay', '');
       videoElement.setAttribute('loop', '');
+      videoElement.setAttribute('disablePictureInPicture', '');
+      videoElement.setAttribute('playsinline', '');
       videoElement.muted = true; // Start muted
       
       // Assign specific CSS class based on TV name

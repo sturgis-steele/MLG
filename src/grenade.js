@@ -36,6 +36,7 @@ export function initializeGrenade(scene) {
   grenadeVideo.loop = false;
   grenadeVideo.controls = false;
   grenadeVideo.style.display = 'none'; // Initially hidden
+  grenadeVideo.setAttribute('disablePictureInPicture', '');
   document.body.appendChild(grenadeVideo);
 
   // Function to play the video

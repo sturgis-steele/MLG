@@ -18,6 +18,8 @@ export function loadServersContent(model) {
     videoElement.setAttribute('autoplay', '');
     videoElement.setAttribute('loop', '');
     videoElement.setAttribute('muted', ''); // Start muted
+    videoElement.setAttribute('playsinline', ''); // Required for iOS
+    videoElement.setAttribute('disablePictureInPicture', ''); // Disable PiP mode
     videoElement.innerHTML = `
       <source src="${videoSrc}" type="video/mp4">
       Your browser does not support the video tag.

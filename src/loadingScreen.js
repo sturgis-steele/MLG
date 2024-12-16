@@ -70,7 +70,7 @@ export function initializeLoadingScreen() {
   const loadingScreen = document.createElement("div");
   loadingScreen.id = "loading-screen";
   loadingScreen.innerHTML = `
-    <video autoplay muted loop>
+    <video playsinline autoplay muted loop>
       <source src="/MLG/dankloadscreen2.mp4" type="video/mp4">
     </video>
   `;

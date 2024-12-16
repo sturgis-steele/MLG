@@ -23,6 +23,8 @@ export function loadVaultContent(model) {
     videoElement.setAttribute('autoplay', '');
     videoElement.setAttribute('loop', '');
     videoElement.setAttribute('muted', ''); // Start muted
+    videoElement.setAttribute('playsinline', ''); // Required for iOS
+    videoElement.setAttribute('disablePictureInPicture', ''); // Disable PiP mode
     videoElement.className = tvClass; // Apply specific class to the video element
     videoElement.innerHTML = `
       <source src="${videoSrc}" type="video/mp4">
