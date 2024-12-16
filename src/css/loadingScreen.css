@@ -24,19 +24,25 @@ html {
 }
 
 .disclaimer {
+  position: fixed;
   color: white;
-  width: 60%;
+  width: 63%;
+  height: 15%;
   font-size: 30px;
   text-align: center;
-  margin-top: 60px;
+  bottom: 0;
+}
+
+.disclaimer p {
+  bottom: 0;
 }
 
 /* Button Styles */
 .button {
+  position: fixed;
   display: inline-block;
   padding: 20px 40px;
   color: white;
-  position: relative; /* Relative for before/after positioning */
   text-decoration: none;
   font-size: 90px;
   background-color: #3498db;

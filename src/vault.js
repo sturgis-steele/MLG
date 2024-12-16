@@ -64,7 +64,7 @@ export function loadVaultContent(model) {
     '/MLG/IMG_0747.MP4',
     [2500, 500, -1750], // Position
     { x: 0, y: -1.2, z: 0 }, // Rotation
-    'vault-tv5' // Specific CSS class
+    'vault-tv6-1' // Specific CSS class
   );
 
   initializeTV(
@@ -72,7 +72,7 @@ export function loadVaultContent(model) {
     '/MLG/IMG_0749.MP4',
     [2500, -415, -1750], // Position
     { x: 0, y: -1.2, z: 0 }, // Rotation
-    'vault-tv6' // Specific CSS class
+    'vault-tv6-2' // Specific CSS class
   );
 
   initializeTV(
@@ -80,7 +80,7 @@ export function loadVaultContent(model) {
     '/MLG/IMG_0746.MP4',
     [1195, 450, -2050], // Position
     { x: 0, y: -0.9, z: 0 }, // Rotation
-    'vault-tv7' // Specific CSS class
+    'vault-tv7-1' // Specific CSS class
   );
 
   initializeTV(
@@ -88,7 +88,23 @@ export function loadVaultContent(model) {
     '/MLG/IMG_0743.MP4',
     [1195, -380, -2050], // Position
     { x: 0, y: -0.9, z: 0 }, // Rotation
-    'vault-tv8' // Specific CSS class
+    'vault-tv7-2' // Specific CSS class
+  );
+
+  initializeTV(
+    findChildByName(model, 'TV8'),
+    '/MLG/Fazemontage4.mp4',
+    [807, 970, 3100], // Position
+    { x: 0, y: 0, z: 0 }, // Rotation
+    'vault-tv8-1' // Specific CSS class
+  );
+
+  initializeTV(
+    findChildByName(model, 'TV8'),
+    '/MLG/Fazesmontage2.mp4',
+    [807, -140, 3100], // Position
+    { x: 0, y: 0, z: 0 }, // Rotation
+    'vault-tv8-2' // Specific CSS class
   );
 
   // Function to mute all TVs except the clicked one and pause the current video if clicked again

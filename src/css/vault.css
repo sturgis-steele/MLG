@@ -11,7 +11,7 @@
 }
 
 /* Specific styles for each TV */
-.vault-tv5 {
+.vault-tv6-1 {
   width: 675px;
   height: 725px;
   border: 12px solid rgb(20, 20, 20);
@@ -19,7 +19,7 @@
   border-radius: 120px;
 }
 
-.vault-tv6 {
+.vault-tv6-2 {
   width: 675px;
   height: 725px;
   border: 12px solid rgb(20, 20, 20);
@@ -27,7 +27,7 @@
   border-radius: 120px;
 }
 
-.vault-tv7 {
+.vault-tv7-1 {
   width: 625px;
   height: 675px;
   border: 12px solid rgb(20, 20, 20);
@@ -35,10 +35,26 @@
   border-radius: 120px;
 }
 
-.vault-tv8 {
+.vault-tv7-2 {
   width: 625px;
   height: 675px;
   border: 12px solid rgb(20, 20, 20);
   object-fit: cover;
   border-radius: 120px;
+}
+
+.vault-tv8-1 {
+  width: 1000px;
+  height: 775px;
+  object-fit: cover; /* Ensures the video covers the area without stretching */
+  border: 12px solid rgb(31, 26, 31);
+  border-radius: 24px;
+}
+
+.vault-tv8-2 {
+  width: 1000px;
+  height: 775px;
+  object-fit: cover; /* Ensures the video covers the area without stretching */
+  border: 12px solid rgb(31, 26, 31);
+  border-radius: 24px;
 }
