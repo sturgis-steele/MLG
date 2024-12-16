@@ -18,7 +18,7 @@ export function initializeGrenade(scene) {
   // Attach the CSS object to the grenade's position
   const cssObject = new CSS3DObject(grenadeDiv);
   cssObject.position.set(440, -400, 275); // Position relative to the grenade
-  cssObject.rotation.set(0, .9, 0); // Rotation to face the camera
+  cssObject.rotation.set(0, 0.9, 0); // Rotation to face the camera
   grenade.add(cssObject);
 
   // Attach event listener to the hitbox for interaction
@@ -31,13 +31,20 @@ export function initializeGrenade(scene) {
   // Create the video element dynamically
   const grenadeVideo = document.createElement('video');
   grenadeVideo.id = 'grenade-video';
-  grenadeVideo.src = '/MLG/grenade.mp4'; // Path to the Easter egg video
+  grenadeVideo.src = getVideoSource(); // Dynamically determine the video source
   grenadeVideo.autoplay = false;
   grenadeVideo.loop = false;
   grenadeVideo.controls = false;
   grenadeVideo.style.display = 'none'; // Initially hidden
   grenadeVideo.setAttribute('disablePictureInPicture', '');
+  grenadeVideo.setAttribute('playsinline', '');
   document.body.appendChild(grenadeVideo);
+
+  // Function to determine the appropriate video source
+  function getVideoSource() {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    return isMobile ? '/MLG/grenadeMobile.mp4' : '/MLG/grenade.mp4';
+  }
 
   // Function to play the video
   function playGrenadeVideo() {

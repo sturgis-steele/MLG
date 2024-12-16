@@ -201,15 +201,14 @@ html {
   #start-screen {
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 50%;
+    padding-top: 30%;
     background: linear-gradient(to right, #e53935, #e35d5b);
   }
 
   .disclaimer {
     width: 70%;
     font-size: 24px;
-    padding-top: 20%;
-    bottom: 10%;
+    padding-top: 0;
   }
 
   .button {
