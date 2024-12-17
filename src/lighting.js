@@ -7,7 +7,7 @@ export function setupLighting(scene) {
     console.log('Setting up mobile-optimized lighting...');
 
     // Add a single ambient light for basic illumination
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // Soft white light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Soft white light
     scene.add(ambientLight);
 
   } else {
