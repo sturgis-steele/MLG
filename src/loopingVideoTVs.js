@@ -37,7 +37,7 @@ export function initializeLoopingVideoTVs(model) {
       const videoDiv = document.createElement('div');
       videoDiv.innerHTML = `
         <div class="${cssClass}">
-          <video playsinline autoplay loop muted>
+          <video playsinline autoplay loop muted loading="lazy">
             <source src="${videoSrc}" type="video/mp4">
             Your browser does not support the video tag.
           </video>

@@ -84,7 +84,9 @@ export function initializeMusicPlayerWithInteraction(model, scene, camera, rende
     };
     document.addEventListener('click', startMusicOnInteraction);
     document.addEventListener('keydown', startMusicOnInteraction);
+    
 
+    // switch to next song
     function switchToNextSong() {
       currentSongIndex = (currentSongIndex + 1) % songs.length;
       audio.src = songs[currentSongIndex];

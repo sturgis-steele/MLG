@@ -5,7 +5,6 @@ import { enableCamera, disableCamera } from "./cameraControls.js";
 export function initializeStartScreen(onStartCallback) {
   const startScreen = document.createElement("div");
   startScreen.id = "start-screen"; // Style this in your CSS
-  // Add the main content for the start screen
   startScreen.innerHTML = `
     <a class="button" href="#">START MATCH</a>
     <div class="disclaimer">
@@ -18,37 +17,35 @@ export function initializeStartScreen(onStartCallback) {
   // Attach event listener to the button
   const startButton = startScreen.querySelector(".button");
   startButton.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent default anchor behavior
-
-    // Add the 'pressed' class to simulate button press
+    event.preventDefault();
     startButton.classList.add("pressed");
 
-    // Delay hiding the start screen and showing the loading screen
+    // Add slight delay for button press animation
     setTimeout(() => {
-      hideStartScreen(startScreen); // Hide the start screen
+      hideStartScreen(startScreen);
 
       // Initialize and show the loading screen
       const loadingScreen = initializeLoadingScreen();
       showLoadingScreen(loadingScreen);
 
-      // Call the callback to load the Blender scene
+      // Callback to load the Blender scene
       if (onStartCallback) {
         onStartCallback(loadingScreen);
       }
-    }, 400); // Allow button press animation to play
+    }, 400);
   });
 
-  return startScreen; // Return the start screen for further manipulation
+  return startScreen;
 }
 
 export function showStartScreen(startScreen) {
-  startScreen.style.display = "flex"; // Show the start screen
-  disableCamera(); // Disable camera movement
+  startScreen.style.display = "flex";
+  disableCamera();
 }
 
 export function hideStartScreen(startScreen) {
-  startScreen.style.display = "none"; // Hide the start screen
-  enableCamera(); // Enable camera movement
+  startScreen.style.display = "none";
+  enableCamera();
 }
 
 // Load screen
@@ -56,32 +53,49 @@ export function initializeLoadingScreen() {
   const loadingScreen = document.createElement("div");
   loadingScreen.id = "loading-screen";
 
-  // Detect device type
+  // Detect device type for video selection
   const isPhone = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  // Choose the video source based on the device
   const videoSrc = isPhone
-    ? "/MLG/dankloadscreen_phone.mp4" // Video for phones
-    : "/MLG/dankloadscreen2.mp4"; // Video for desktops and tablets
+    ? "/MLG/dankloadscreen_phone.mp4" // Optimized for phones
+    : "/MLG/dankloadscreen2.mp4"; // Desktop/tablet version
 
-  // Set up the video element
-  loadingScreen.innerHTML = `
-    <video playsinline autoplay muted loop>
-      <source src="${videoSrc}" type="video/mp4">
-    </video>
-  `;
+  // Create video element with lazy loading
+  const videoElement = document.createElement("video");
+  videoElement.setAttribute("playsinline", ""); // Mobile compatibility
+  videoElement.setAttribute("autoplay", "");
+  videoElement.setAttribute("muted", "");
+  videoElement.setAttribute("loop", "");
+  videoElement.setAttribute("preload", "none"); // Lazy load
+  videoElement.style.display = "block";
+  videoElement.innerHTML = `<source src="${videoSrc}" type="video/mp4">`;
 
+  loadingScreen.appendChild(videoElement);
   document.body.appendChild(loadingScreen);
 
-  return loadingScreen; // Return the loading screen for further manipulation
+  // Cleanup DOM when the video ends
+  videoElement.addEventListener("ended", () => {
+    console.log("Loading video ended, cleaning up...");
+    hideLoadingScreen(loadingScreen);
+    videoElement.remove(); // Remove video element
+  });
+
+  return loadingScreen;
 }
 
 export function showLoadingScreen(loadingScreen) {
   loadingScreen.style.display = "flex";
-  disableCamera(); // Ensure camera movement is disabled
+  disableCamera();
 }
 
 export function hideLoadingScreen(loadingScreen) {
   loadingScreen.style.display = "none";
-  enableCamera(); // Re-enable camera movement
+  enableCamera();
+
+  // Cleanup: Remove the loading screen from DOM
+  setTimeout(() => {
+    if (loadingScreen && loadingScreen.parentElement) {
+      console.log("Removing loading screen from DOM...");
+      loadingScreen.remove();
+    }
+  }, 500); // Allow smooth fade-out transition
 }

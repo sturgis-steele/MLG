@@ -37,7 +37,7 @@ export function loadLobbyContent(model) {
     (() => {
       const staticDiv = document.createElement('div');
       staticDiv.className = 'lobby-content';
-      staticDiv.innerHTML = '<img src="/MLG/screen1.png" alt="Lobby Image">';
+      staticDiv.innerHTML = '<img src="/MLG/screen1.png" loading="lazy" alt="Lobby Image">';
       return staticDiv;
     })(),
     [2500, 500, -1750],
@@ -49,7 +49,7 @@ export function loadLobbyContent(model) {
     (() => {
       const staticDiv = document.createElement('div');
       staticDiv.className = 'lobby-content';
-      staticDiv.innerHTML = '<img src="/MLG/screen2.png" alt="Lobby Image">';
+      staticDiv.innerHTML = '<img src="/MLG/screen2.png" loading="lazy" alt="Lobby Image">';
       return staticDiv;
     })(),
     [2500, -415, -1750],
@@ -75,7 +75,8 @@ export function loadLobbyContent(model) {
     (() => {
       const iframeElement = document.createElement('iframe');
       iframeElement.src = 'https://mlgedit.com/';
-
+      iframeElement.loading = "lazy";
+      iframeElement.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
       const websiteDiv = document.createElement('div');
       websiteDiv.className = 'lobby-content website';
       websiteDiv.appendChild(iframeElement);
@@ -88,6 +89,24 @@ export function loadLobbyContent(model) {
 
   // Add an overlay for the clickable website TV
   initializeTVOverlay(websiteTV, [1195, -380, -2050], 'https://mlgedit.com/');
+}
+
+// Cleanup function to remove lobby content
+export function clearLobbyContent(model) {
+  const tvNames = ['TV6', 'TV7'];
+  tvNames.forEach((tvName) => {
+    const tv = findChildByName(model, tvName);
+    if (tv) {
+      for (let i = tv.children.length - 1; i >= 0; i--) {
+        const child = tv.children[i];
+        if (child.isCSS3DObject && child.element.classList.contains('lobby-content')) {
+          tv.remove(child);
+          console.log(`Removed lobby content from ${tvName}`);
+        }
+      }
+    }
+  });
+  console.log('Lobby content cleared.');
 }
 
 // Helper function to find child by name
