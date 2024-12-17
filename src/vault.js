@@ -138,27 +138,37 @@ export function loadVaultContent(model) {
   }
 }
 
-// Function to clear vault TVs
-export function clearVaultTVs() {
-  console.log('Clearing specific vault TVs...');
+// Function to clear only overlayed videos specifically on TV8s
+export function clearVaultTVs(model) {
+  console.log('Clearing overlayed videos from vault TV8s...');
 
-  // List of video sources to clear
-  const videoSourcesToClear = [
-    '/MLG/Fazemontage4.mp4', // Replace with the actual path to the video
-    '/MLG/Fazesmontage2.mp4'  // Add more video sources as needed
-  ];
+  // Find all TV8 objects in the model
+  const tvNames = ['TV8'];
 
-  // Select all video elements in the DOM
-  const videoElements = document.querySelectorAll('video');
+  tvNames.forEach((tvName) => {
+    const tv = findChildByName(model, tvName); // Locate TV8 in the scene
 
-  videoElements.forEach((videoElement) => {
-    if (videoSourcesToClear.includes(videoElement.src)) {
-      console.log(`Clearing video: ${videoElement.src}`);
-      videoElement.pause(); // Stop the video
-      videoElement.currentTime = 0; // Reset video to the beginning
-      videoElement.parentElement.style.display = 'none'; // Hide the parent element
+    if (tv) {
+      // Loop through all the children of TV8
+      for (let i = tv.children.length - 1; i >= 0; i--) {
+        const child = tv.children[i];
+
+        // Check if the child has a video element (CSS3DObject) with the specific class
+        const videoElement = child.element.querySelector('video.vault-tv8');
+        if (videoElement) {
+          console.log(`Pausing and removing overlayed video from: ${tvName}`);
+          videoElement.pause(); // Stop the video playback
+          videoElement.currentTime = 0; // Reset video playback to start
+          videoElement.parentElement.style.display = 'none'; // Hide video container
+          tv.remove(child); // Remove the overlay video (CSS3DObject) from TV8
+        }
+      }
+    } else {
+      console.warn(`TV with name "${tvName}" not found in the scene.`);
     }
   });
+
+  console.log('Overlayed videos have been cleared from vault TV8s.');
 }
 
 // Helper function to find child by name

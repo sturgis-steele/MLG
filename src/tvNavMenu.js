@@ -8,7 +8,7 @@ import { loadClanContent } from './clan.js';
 import './css/tvNavMenu.css';
 
 // Function to create and attach the TV navigation menu
-export function initializeTVNavMenu(model, clearTVs, clearVaultTVs) {
+export function initializeTVNavMenu(model, clearTVs) {
   let tvNavMenu;
 
   // Locate the TV for the navigation menu
@@ -43,15 +43,15 @@ export function initializeTVNavMenu(model, clearTVs, clearVaultTVs) {
 
         // Clear previous content
         clearTVs(model);
-
+        
         // Load the corresponding content
         if (target === 'lobby') {
           loadLobbyContent(model);
-          clearVaultTVs(); 
+          clearVaultTVs(model);
         }
         if (target === 'servers') {
           loadServersContent(model);
-          clearVaultTVs(); // Clear vault content
+          clearVaultTVs(model);
         }
         if (target === 'vault') {
           loadVaultContent(model);
@@ -59,7 +59,7 @@ export function initializeTVNavMenu(model, clearTVs, clearVaultTVs) {
         }
         if (target === 'clan') {
           loadClanContent(model);
-          clearVaultTVs(); 
+          clearVaultTVs(model);
         }
       });
     });
