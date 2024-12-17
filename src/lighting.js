@@ -1,8 +1,9 @@
 import * as THREE from 'three';
+import { isMobileDevice } from './deviceDetection.js';
 
 export function setupLighting(scene) {
   const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  if (isMobile) {
+  if (isMobileDevice()) {
     console.log('Setting up mobile-optimized lighting...');
 
     // Add a single ambient light for basic illumination
