@@ -1,8 +1,13 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/MLG/', // Replace 'MLG' with the name of your GitHub repo
+  base: '/MLG/', // Matches the deployed path
   build: {
-    outDir: 'docs', // Ensure the build output is placed in the 'docs' folder for GitHub Pages
+    outDir: 'docs',
+  },
+  server: {
+    host: true,
+    port: 5173,
+
   },
 });
