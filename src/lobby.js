@@ -37,7 +37,7 @@ export function loadLobbyContent(model) {
     (() => {
       const staticDiv = document.createElement('div');
       staticDiv.className = 'lobby-content';
-      staticDiv.innerHTML = '<img src="/MLG/screen1.png" loading="lazy" alt="Lobby Image">';
+      staticDiv.innerHTML = '<img src="/MLG/tv_content/images/screen1.webp" alt="Lobby Image">';
       return staticDiv;
     })(),
     [2500, 500, -1750],
@@ -49,7 +49,7 @@ export function loadLobbyContent(model) {
     (() => {
       const staticDiv = document.createElement('div');
       staticDiv.className = 'lobby-content';
-      staticDiv.innerHTML = '<img src="/MLG/screen2.png" loading="lazy" alt="Lobby Image">';
+      staticDiv.innerHTML = '<img src="/MLG/tv_content/images/screen2.webp" alt="Lobby Image">';
       return staticDiv;
     })(),
     [2500, -415, -1750],
@@ -75,7 +75,6 @@ export function loadLobbyContent(model) {
     (() => {
       const iframeElement = document.createElement('iframe');
       iframeElement.src = 'https://mlgedit.com/';
-      iframeElement.loading = "lazy";
       iframeElement.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
       const websiteDiv = document.createElement('div');
       websiteDiv.className = 'lobby-content website';

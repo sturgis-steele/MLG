@@ -72,8 +72,8 @@ export function initializeTVNavMenu(model, clearTVs) {
 // Initialize TVs with static videos before navigation
 function initializeStaticTVs(model) {
   // Define video paths
-  const staticVideoSrc1 = '/MLG/TV_static1.mp4'; // Default static video
-  const staticVideoSrc2 = '/MLG/TV_static.mp4'; // New static video
+  const staticVideoSrc1 = '/MLG/tv_content/videos/TV_static1.mp4'; // Default static video
+  const staticVideoSrc2 = '/MLG/tv_content/videos/TV_static.mp4'; // New static video
   
   // Define TV names, positions, and rotations
   const tvNames = ['TV6', 'TV6','TV7', 'TV7'];

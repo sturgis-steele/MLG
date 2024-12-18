@@ -12,6 +12,24 @@ export function setupLighting(scene) {
     pointLight.castShadow = true;
     scene.add(pointLight);
 
+    // Spotlight targeting sign
+    const targetPosition = new THREE.Vector3(500, 300 , 0);
+
+    const spotlight = new THREE.SpotLight(0xffffff, 1); // Color: white, Intensity: 1
+    spotlight.position.set(150, 180, 0); // Spotlight's position in the scene
+    spotlight.angle = Math.PI / 7; // Controls the cone angle (wider if increased, narrower if decreased)
+    spotlight.penumbra = 1; // Soft edges for the spotlight cone (0 = hard edge, 1 = softest)
+    spotlight.decay = 0; // How light intensity decreases over distance (higher values reduce intensity faster)
+    spotlight.distance = 1000; // Maximum distance the spotlight reaches (set to a large value for testing)
+    spotlight.castShadow = true; // Enable shadows for the spotlight
+    spotlight.intensity = 4; // Increase the intensity to 2 (adjust as needed)
+
+    const spotlightTarget = new THREE.Object3D();
+    spotlightTarget.position.copy(targetPosition);
+    scene.add(spotlightTarget);
+    spotlight.target = spotlightTarget;
+
+    scene.add(spotlight);
   } else {
     console.log('Setting up desktop lighting...');
     // Add light above the chair

@@ -52,7 +52,7 @@ export function initializeMusicPlayerWithInteraction(model, scene, camera, rende
     // Set initial audio properties
     audio.src = songs[currentSongIndex];
     audio.loop = false;
-    audio.volume = 0.5;
+    audio.volume = 0.33;
     document.body.appendChild(audio);
     
     // Attach event listener to switch to the next song when the current one ends

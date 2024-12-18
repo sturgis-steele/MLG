@@ -27,8 +27,10 @@ export function loadBlenderScene(scene, camera, renderer) {
 
         console.log('Blender scene loaded:', model);
 
-        // Hide the loading screen after the model is loaded
-        hideLoadingScreen(loadingScreen);
+        // Hide the loading screen after the model is loaded\
+        setTimeout(() => {
+          hideLoadingScreen(loadingScreen);
+        }, 3000);
 
         // Initialize various components and interactions
         initializeAnimationMixer(model, gltf.animations);

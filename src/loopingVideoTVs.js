@@ -8,21 +8,21 @@ export function initializeLoopingVideoTVs(model) {
   const tvVideoMappings = [
     {
       tvName: 'TV4', // Replace with the Blender object name for the TV
-      videoSrc: '/MLG/IlluminatiStockChart.mp4', // Path to the video file
+      videoSrc: '/MLG/tv_content/videos/Illuminatistockchart.webm', // Path to the video file
       position: { x: 3650, y: 720, z: -4425 }, // Adjust the position of the video
       rotation: { x: 0, y: -.6, z: 0 }, // Adjust rotation for this TV (in radians)
       cssClass: 'stock-chart', // Add a CSS class for styling
     },
     {
       tvName: 'TV8', // Replace with the Blender object name for the TV
-      videoSrc: '/MLG/IMG_0740.MP4', // Path to the video file
+      videoSrc: '/MLG/tv_content/videos/slideShow1.webm', // Path to the video file
       position: { x: 807, y: 970, z: 3100 }, // Adjust the position of the video
       rotation: { x: 0, y: 0, z: 0 }, // Adjust rotation for this TV (in radians)
       cssClass: 'looping-video', // Add a CSS class for styling
     },
     {
       tvName: 'TV8', // Replace with the Blender object name for the TV
-      videoSrc: '/MLG/IMG_0763.MP4', // Path to the video file
+      videoSrc: '/MLG/tv_content/videos/slideShow.webm', // Path to the video file
       position: { x: 807, y: -140, z: 3100 }, // Adjust the position of the video
       rotation: { x: 0, y: 0, z: 0 }, // Adjust rotation for this TV (in radians)
       cssClass: 'looping-video', // Add a CSS class for styling
@@ -38,7 +38,7 @@ export function initializeLoopingVideoTVs(model) {
       videoDiv.innerHTML = `
         <div class="${cssClass}">
           <video playsinline autoplay loop muted loading="lazy">
-            <source src="${videoSrc}" type="video/mp4">
+            <source src="${videoSrc}" type="video/webm">
             Your browser does not support the video tag.
           </video>
         </div>

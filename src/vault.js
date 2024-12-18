@@ -22,12 +22,11 @@ export function loadVaultContent(model) {
     const videoElement = document.createElement('video');
     videoElement.setAttribute('autoplay', '');
     videoElement.setAttribute('loop', '');
-    videoElement.setAttribute('muted', ''); // Start muted
     videoElement.setAttribute('playsinline', ''); // Required for iOS
     videoElement.setAttribute('disablePictureInPicture', ''); // Disable PiP mode
     videoElement.className = tvClass; // Apply specific class to the video element
     videoElement.innerHTML = `
-      <source src="${videoSrc}" type="video/mp4">
+      <source src="${videoSrc}" type="video/webm">
       Your browser does not support the video tag.
     `;
   
@@ -61,7 +60,7 @@ export function loadVaultContent(model) {
   // Initialize TVs with content and specific CSS classes
   initializeTV(
     findChildByName(model, 'TV6'),
-    '/MLG/IMG_0747.MP4',
+    '/MLG/tv_content/videos/greenVault.webm',
     [2500, 500, -1750], // Position
     { x: 0, y: -1.2, z: 0 }, // Rotation
     'vault-tv6-1' // Specific CSS class
@@ -69,7 +68,7 @@ export function loadVaultContent(model) {
 
   initializeTV(
     findChildByName(model, 'TV6'),
-    '/MLG/IMG_0749.MP4',
+    '/MLG/tv_content/videos/teletubbyVault.webm',
     [2500, -415, -1750], // Position
     { x: 0, y: -1.2, z: 0 }, // Rotation
     'vault-tv6-2' // Specific CSS class
@@ -77,7 +76,7 @@ export function loadVaultContent(model) {
 
   initializeTV(
     findChildByName(model, 'TV7'),
-    '/MLG/IMG_0746.MP4',
+    '/MLG/tv_content/videos/FazeVault.webm',
     [1195, 450, -2050], // Position
     { x: 0, y: -0.9, z: 0 }, // Rotation
     'vault-tv7-1' // Specific CSS class
@@ -85,7 +84,7 @@ export function loadVaultContent(model) {
 
   initializeTV(
     findChildByName(model, 'TV7'),
-    '/MLG/IMG_0743.MP4',
+    '/MLG/tv_content/videos/snoopVault.webm',
     [1195, -380, -2050], // Position
     { x: 0, y: -0.9, z: 0 }, // Rotation
     'vault-tv7-2' // Specific CSS class
@@ -93,7 +92,7 @@ export function loadVaultContent(model) {
 
   initializeTV(
     findChildByName(model, 'TV8'),
-    '/MLG/Fazemontage4.mp4',
+    '/MLG/tv_content/videos/Fazemontage.webm',
     [807, 970, 3100], // Position
     { x: 0, y: 0, z: 0 }, // Rotation
     'vault-tv8' // Specific CSS class
@@ -101,7 +100,7 @@ export function loadVaultContent(model) {
 
   initializeTV(
     findChildByName(model, 'TV8'),
-    '/MLG/Fazesmontage2.mp4',
+    '/MLG/tv_content/videos/Fazemontage1.webm',
     [807, -140, 3100], // Position
     { x: 0, y: 0, z: 0 }, // Rotation
     'vault-tv8' // Specific CSS class

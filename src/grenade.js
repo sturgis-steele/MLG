@@ -70,7 +70,7 @@ export function initializeGrenade(scene) {
   // Function to determine the appropriate video source
   function getVideoSource() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    return isMobile ? '/MLG/grenadeMobile.mp4' : '/MLG/grenade.mp4';
+    return isMobile ? '/MLG/grenadeMobile.webm' : '/MLG/grenade.webm';
   }
 }
 
