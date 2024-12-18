@@ -1,5 +1,6 @@
 import "./css/loadingScreen.css";
 import { enableCamera, disableCamera } from "./cameraControls.js";
+import { isMobileDevice } from "./deviceDetection.js";
 
 // Start screen
 export function initializeStartScreen(onStartCallback) {
@@ -53,9 +54,8 @@ export function initializeLoadingScreen() {
   const loadingScreen = document.createElement("div");
   loadingScreen.id = "loading-screen";
 
-  // Detect device type for video selection
-  const isPhone = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const videoSrc = isPhone
+  // Use isMobileDevice() for device detection
+  const videoSrc = isMobileDevice()
     ? "/MLG/dankloadscreen_phone.mp4" // Optimized for phones
     : "/MLG/dankloadscreen2.mp4"; // Desktop/tablet version
 

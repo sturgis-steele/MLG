@@ -7,9 +7,7 @@ import { loadLiveData } from './livePriceTV.js';
 import { initializeStartScreen, hideLoadingScreen } from './loadingScreen.js';
 import { initializeTVNavMenu, clearTVs } from './tvNavMenu.js';
 import { initializeRollingPaperWithInteraction } from './rollingPaper.js';
-import { initializeCameraControls } from './cameraControls.js';
 import { initializeLoopingVideoTVs } from './loopingVideoTVs.js';
-import * as THREE from 'three';
 
 export function loadBlenderScene(scene, camera, renderer) {
   const loader = new GLTFLoader();
