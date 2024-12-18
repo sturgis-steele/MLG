@@ -37,22 +37,7 @@ export function loadBlenderScene(scene, camera, renderer) {
         loadLiveData(model);
         initializeTVNavMenu(model, clearTVs);
         initializeLoopingVideoTVs(model);
-
-        const cameraControls = initializeCameraControls(camera);
-        const { unlockCamera } = initializeRollingPaperWithInteraction(model, scene, camera, renderer);
-
-        // Ensure unlock button is added or exists in the DOM
-        let unlockButton = document.getElementById('unlock-button');
-        if (!unlockButton) {
-          unlockButton = document.createElement('button');
-          unlockButton.id = 'unlock-button';
-          unlockButton.textContent = 'Unlock Camera';
-          document.body.appendChild(unlockButton);
-        }
-
-        unlockButton.addEventListener('click', () => {
-          unlockCamera();
-        });
+        initializeRollingPaperWithInteraction(model, scene, camera, renderer);
       },
       undefined,
       (error) => {

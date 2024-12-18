@@ -6,9 +6,11 @@ export function setupLighting(scene) {
   if (isMobileDevice()) {
     console.log('Setting up mobile-optimized lighting...');
 
-    // Add a single ambient light for basic illumination
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Soft white light
-    scene.add(ambientLight);
+    // Add light above the chair
+    const pointLight = new THREE.PointLight(0xffffff, 120000, 1000, 2.1);
+    pointLight.position.set(18, 180, 4.2);
+    pointLight.castShadow = true;
+    scene.add(pointLight);
 
   } else {
     console.log('Setting up desktop lighting...');
