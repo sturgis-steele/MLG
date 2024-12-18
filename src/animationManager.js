@@ -19,7 +19,7 @@ export function initializeAnimationMixer(model, animations) {
 
     // Reduce animation speed on mobile devices
     if (isMobileDevice()) {
-      action.timeScale = 0.75; // 25% slower on mobile
+      action.timeScale = 0.33; // 25% slower on mobile
     }
 
     action.play();

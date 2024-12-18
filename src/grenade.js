@@ -1,5 +1,6 @@
 import './css/grenade.css';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import { isMobileDevice } from './deviceDetection.js'; // Import the shared device detection function
 
 export function initializeGrenade(scene) {
   const grenade = findGrenadeInScene(scene); // Find the grenade in the 3D scene
@@ -60,17 +61,16 @@ export function initializeGrenade(scene) {
     videoElement.autoplay = false;
     videoElement.loop = false;
     videoElement.controls = false;
+    videoElement.setAttribute('muted', 'false'); // Mute by default
     videoElement.style.display = 'none';
     videoElement.setAttribute('disablePictureInPicture', '');
     videoElement.setAttribute('playsinline', '');
-    videoElement.setAttribute('preload', 'auto'); // Lazy load optimization
     return videoElement;
   }
 
-  // Function to determine the appropriate video source
+  // Function to determine the appropriate video source using isMobileDevice()
   function getVideoSource() {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    return isMobile ? '/MLG/grenadeMobile.webm' : '/MLG/grenade.webm';
+    return isMobileDevice() ? '/MLG/grenadeMobile.webm' : '/MLG/grenade.webm';
   }
 }
 

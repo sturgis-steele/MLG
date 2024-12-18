@@ -63,7 +63,8 @@ export function initializeLoadingScreen() {
   const videoElement = document.createElement("video");
   videoElement.setAttribute("playsinline", ""); // Mobile compatibility
   videoElement.setAttribute("autoplay", "");
-  videoElement.setAttribute("muted", "");
+  videoElement.setAttribute("muted", "true");
+  videoElement.muted = true; // For Safari
   videoElement.setAttribute("loop", "");
   videoElement.setAttribute("preload", "none"); // Lazy load
   videoElement.style.display = "block";
