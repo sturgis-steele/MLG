@@ -3867,16 +3867,16 @@ void main() {
       Your browser does not support the video tag.
     `;const d=document.createElement("div");d.className=`servers-content ${u}`,d.appendChild(h);const p=document.createElement("div");p.className="server-title",p.innerText=l,d.appendChild(p);const g=new vt(d);g.position.set(...a),g.rotation.set(c.x,c.y,c.z),r.add(g),d.addEventListener("click",()=>{i(h)}),e.push({tv:r,videoElement:h})}n(Xs(s,"TV6"),"/MLG/blackopsscreen.mp4",[2500,500,-1750],{x:0,y:-1.2,z:0},"Call of Duty","tv6-content"),n(Xs(s,"TV6"),"/MLG/minecraftscreen.mp4",[2500,-415,-1750],{x:0,y:-1.2,z:0},"Minecraft","tv6-content"),n(Xs(s,"TV7"),"/MLG/gtascreen.mp4",[1195,450,-2050],{x:0,y:-.9,z:0},"GTA V","tv7-content"),n(Xs(s,"TV7"),"/MLG/tbdscreen.mp4",[1195,-380,-2050],{x:0,y:-.9,z:0},"TBD","tv7-content");function i(r){t===r?(r.muted=!0,r.pause(),t=null):e.forEach(({videoElement:o})=>{o===r?(o.muted=!1,o.play(),t=r):(o.muted=!0,o.pause())})}}function Xs(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}function cv(s){const e=qs(s,"TV6"),t=qs(s,"TV6"),n=qs(s,"TV7"),i=qs(s,"TV7");if(e){const r=document.createElement("div");r.className="clan-content telegram",r.innerHTML=`
       <a href="https://t.me/MLGCTOPORTAL" target="_blank">
-        <img src="/MLG/telegram.png" alt="Telegram" />
+        <img src="/MLG/photos/telegram.png" alt="Telegram" />
       </a>`;const o=new vt(r);o.position.set(2500,500,-1750),o.rotation.set(0,-1.2,0),e.add(o)}if(t){const r=document.createElement("div");r.className="clan-content youtube",r.innerHTML=`
       <a href="https://www.youtube.com/@MLGsolana420/videos" target="_blank">
-        <img src="/MLG/youtube.png" alt="YouTube" />
+        <img src="/MLG/photos/youtube.png" alt="YouTube" />
       </a>`;const o=new vt(r);o.position.set(2500,-415,-1750),o.rotation.set(0,-1.2,0),t.add(o)}if(n){const r=document.createElement("div");r.className="clan-content discord",r.innerHTML=`
       <a href="https://discord.gg/munnopoly" target="_blank">
-        <img src="/MLG/discord.png" alt="Discord" />
+        <img src="/MLG/photos/discord.png" alt="Discord" />
       </a>`;const o=new vt(r);o.position.set(1195,450,-2050),o.rotation.set(0,-.9,0),n.add(o)}if(i){const r=document.createElement("div");r.className="clan-content twitter",r.innerHTML=`
       <a href="https://x.com/MLGsolana420" target="_blank">
-        <img src="/MLG/x.jpg" alt="Twitter" />
+        <img src="/MLG/photos/x.jpg" alt="Twitter" />
       </a>`;const o=new vt(r);o.position.set(1195,-380,-2050),o.rotation.set(0,-.9,0),i.add(o)}}function qs(s,e){let t=null;return s.traverse(n=>{n.name===e&&(t=n)}),t}function lv(s,e){let t;if(s.traverse(n=>{n.name==="TV1"&&(t=n)}),t){const n=document.createElement("div");n.innerHTML=`
       <div class="nav-tv">
         <div class="menu-item" data-target="lobby">LOBBY</div>
