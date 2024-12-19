@@ -120,22 +120,27 @@ function initializeStaticTVs(model) {
 
 // Helper function to clear previous content from TVs
 export function clearTVs(model) {
-  const tvNames = ['TV6', 'TV6', 'TV7', 'TV7'];
+  const tvNames = ['TV6', 'TV7']; // Target TVs dynamically if needed
 
   tvNames.forEach((tvName) => {
     const tv = findChildByName(model, tvName);
-    if (tv) {
-      // Remove all children that are dynamically added (CSS3DObject)
-      for (let i = tv.children.length - 1; i >= 0; i--) {
-        const child = tv.children[i];
-        if (child.isCSS3DObject) {
-          tv.remove(child);
-          resumeMusic(); // Resume music playback
-        }
-      }
+    if (tv && tv.children) {
+      // Filter and remove all CSS3DObjects
+      const childrenToRemove = tv.children.filter((child) => child.isCSS3DObject);
+      childrenToRemove.forEach((child) => {
+        tv.remove(child);
+        console.log(`Removed CSS3DObject: ${child}`);
+      });
+    } else {
+      console.warn(`TV ${tvName} not found or has no children.`);
     }
   });
+
+  // Resume music after all clearing
+  resumeMusic();
+  console.log('Cleared all specified TVs and resumed music.');
 }
+
 
 // Helper function to find a child by name
 export function findChildByName(model, name) {

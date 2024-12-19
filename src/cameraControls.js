@@ -1,9 +1,10 @@
 import * as THREE from 'three';
+import { isMobileDevice } from './deviceDetection';
 
 let isCameraEnabled = false; // Flag to track camera control state
 
 export function initializeCameraControls(camera) {
-  if (isTouchDevice()) {
+  if (isMobileDevice()) {
     initializePhoneControls(camera); // Use touch-based controls for mobile
   } else {
     initializePCControls(camera); // Use mouse-based controls for desktop
@@ -48,19 +49,29 @@ function initializePhoneControls(camera) {
   let pitch = 0; // Vertical rotation (up/down)
   let previousTouchPosition = null; // Track the last touch position
 
+  let lastUpdateTime = Date.now(); // Timestamp of the last camera update
+  const updateInterval = 32; // Limit updates to ~60 FPS (16ms per update)
+
   // Extract the camera's initial yaw and pitch
   const initialEuler = new THREE.Euler().setFromQuaternion(camera.quaternion, 'YXZ');
   yaw = initialEuler.y; // Initial horizontal rotation (yaw)
   pitch = initialEuler.x; // Initial vertical rotation (pitch)
 
   // Define rotation limits
-  const yawLimitLeft = yaw - Math.PI / 2; // 45 degrees to the left of the starting yaw
-  const yawLimitRight = yaw + Math.PI / 2; // 45 degrees to the right of the starting yaw
+  const yawLimitLeft = yaw - Math.PI / 2; // 90 degrees to the left of the starting yaw
+  const yawLimitRight = yaw + Math.PI / 2; // 90 degrees to the right of the starting yaw
   const pitchLimitUp = Math.PI / 2 - 0.1; // Slightly less than 90 degrees up
   const pitchLimitDown = -Math.PI / 2 + 0.1; // Slightly more than -90 degrees down
 
   document.addEventListener('touchmove', (event) => {
     if (!isCameraEnabled || event.touches.length !== 1) return;
+
+    const now = Date.now();
+    if (now - lastUpdateTime < updateInterval) {
+      // Skip this update if the interval hasn't passed
+      return;
+    }
+    lastUpdateTime = now; // Update the timestamp for the next allowed update
 
     const touch = event.touches[0];
     const touchX = touch.clientX;
@@ -87,10 +98,6 @@ function initializePhoneControls(camera) {
   document.addEventListener('touchend', () => {
     previousTouchPosition = null; // Clear touch position
   });
-}
-
-function isTouchDevice() {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 }
 
 // Functions to enable/disable camera controls
