@@ -2,7 +2,6 @@ import * as THREE from 'three';
 import { isMobileDevice } from './deviceDetection.js';
 
 export function setupLighting(scene) {
-  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   if (isMobileDevice()) {
     console.log('Setting up mobile-optimized lighting...');
 
@@ -18,10 +17,10 @@ export function setupLighting(scene) {
     const spotlight = new THREE.SpotLight(0xffffff, 1); // Color: white, Intensity: 1
     spotlight.position.set(150, 180, 0); // Spotlight's position in the scene
     spotlight.angle = Math.PI / 7; // Controls the cone angle (wider if increased, narrower if decreased)
-    spotlight.penumbra = 1; // Soft edges for the spotlight cone (0 = hard edge, 1 = softest)
+    spotlight.penumbra = 0; // Soft edges for the spotlight cone (0 = hard edge, 1 = softest)
     spotlight.decay = 0; // How light intensity decreases over distance (higher values reduce intensity faster)
     spotlight.distance = 1000; // Maximum distance the spotlight reaches (set to a large value for testing)
-    spotlight.castShadow = true; // Enable shadows for the spotlight
+    spotlight.castShadow = false; // Enable shadows for the spotlight
     spotlight.intensity = 4; // Increase the intensity to 2 (adjust as needed)
 
     const spotlightTarget = new THREE.Object3D();

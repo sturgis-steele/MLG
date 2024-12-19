@@ -55,7 +55,7 @@ export function initializeTVNavMenu(model, clearTVs) {
         }
         if (target === 'vault') {
           loadVaultContent(model);
-          pauseMusic(); // Pause music playback
+          pauseMusic(); 
         }
         if (target === 'clan') {
           loadClanContent(model);
