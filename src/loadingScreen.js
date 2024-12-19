@@ -9,9 +9,9 @@ export function initializeStartScreen(onStartCallback) {
   startScreen.innerHTML = `
     <a class="button" href="#">START MATCH</a>
     <div class="disclaimer">
-      <p>This website is entirely fan made and has no association with the deployer of $MLG cryptocurrency on the solana blockchain or any game studio. $MLG is a crypto asset with no intrinsic value or expectation of financial return. These 360noscope420blazeit coins are to be used for entertainment purposes only.</p>
+      <p>This website is entirely fan made and has no association with the deployer of $MLG cryptocurrency on the solana blockchain. $MLG has no affiliation with "Major League Gaming" or any brands parodied in this website. $MLG is a crypto asset with no intrinsic value or expectation of financial return. These 360noscope420blazeit coins are to be used for entertainment purposes only.</p>
     </div>
-  `;
+      `;
 
   document.body.appendChild(startScreen);
 

@@ -1,6 +1,7 @@
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import './css/vault.css';
 import { pauseMusic, resumeMusic, audio } from './musicPlayer.js';
+import { isMobileDevice } from './deviceDetection.js';
 
 export function loadVaultContent(model) {
   const tvs = []; // Array to store references to all TVs and their videos
@@ -18,9 +19,18 @@ export function loadVaultContent(model) {
     }
   
     console.log(`Initializing TV: ${tvClass}`, tv);
-  
+
     const videoElement = document.createElement('video');
-    videoElement.setAttribute('autoplay', '');
+    
+    if (isMobileDevice()) {
+      videoElement.muted = true;
+    }
+    else {
+      videoElement.muted = false;
+    }
+
+    videoElement.setAttribute('autoplay', 'true');
+    videoElement.autoplay = true;
     videoElement.setAttribute('loop', '');
     videoElement.setAttribute('playsinline', ''); // Required for iOS
     videoElement.setAttribute('disablePictureInPicture', ''); // Disable PiP mode
