@@ -17,7 +17,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #e35d5b;
+  background: linear-gradient(to right, #e35d5b, #e53935);
   z-index: 1100;
   font-family: "Bebas Neue", sans-serif;
   box-sizing: border-box;
@@ -31,6 +31,7 @@ html {
   font-size: 30px;
   text-align: center;
   bottom: 0;
+  margin-bottom: 30px;
 }
 
 .disclaimer p {
@@ -181,12 +182,13 @@ html {
   .disclaimer {
     width: 80%;
     font-size: 18px;
-    margin-bottom: 30px;
+    margin-bottom: 90px;
    }
 
   .button {
     font-size: 60px;
     padding: 15px 30px;
+    margin-bottom: 60px;
   }
 
   .button::before {
@@ -203,17 +205,17 @@ html {
 }
 
 /* Media Queries for Tablets */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1600px) {
   #start-screen {
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(to right, #e53935, #e35d5b);
+    background: linear-gradient(to right, #e35d5b, #e53935);
   }
 
   .disclaimer {
     width: 70%;
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 90px;
   }
 
   .button {
