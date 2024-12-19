@@ -8,7 +8,7 @@ import { initializeStartScreen, hideLoadingScreen } from './loadingScreen.js';
 import { initializeTVNavMenu, clearTVs } from './tvNavMenu.js';
 import { initializeRollingPaperWithInteraction } from './rollingPaper.js';
 import { initializeLoopingVideoTVs } from './loopingVideoTVs.js';
-import { initializeMountainJew } from './mountainJew.js';
+import { initializeMountainDew } from './mountainDew.js';
 
 export function loadBlenderScene(scene, camera, renderer) {
   const loader = new GLTFLoader();
@@ -35,7 +35,7 @@ export function loadBlenderScene(scene, camera, renderer) {
         initializeAnimationMixer(model, gltf.animations);
         initializeMusicPlayerWithInteraction(model, scene, camera, renderer);
         initializeGrenade(scene);
-        initializeMountainJew(scene);
+        initializeMountainDew(scene);
         loadLiveData(model);
         initializeTVNavMenu(model, clearTVs);
         initializeLoopingVideoTVs(model);

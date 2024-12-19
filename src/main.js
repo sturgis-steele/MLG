@@ -53,6 +53,15 @@ initializeHitmarker();
 // Call Blender rendering function
 loadBlenderScene(scene, camera, renderer);
 
+// Prevent zooming with two fingers or double-tap
+document.addEventListener('gesturestart', function (event) {
+  event.preventDefault();
+});
+
+// Prevent scrolling
+document.addEventListener('touchmove', function (event) {
+  event.preventDefault();
+}, { passive: false });
 
 // Animation loop
 function animate() {

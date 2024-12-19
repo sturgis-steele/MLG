@@ -1,5 +1,5 @@
-/* MountainJew hitbox for interaction */
-.mountainJew-overlay {
+/* MountainDew hitbox for interaction */
+.MountainDew-overlay {
     position: absolute;
     width: 75px; /* Adjust size as needed */
     height: 51px;
@@ -7,14 +7,14 @@
     pointer-events: none; /* Default state: no interaction */
 }
   
-.mountainJew-hitbox {
+.MountainDew-hitbox {
     width: 100%;
     height: 100%;
     pointer-events: all; /* Enable interaction */
     cursor: pointer;
 }
   
-#mountainJew-video {
+#MountainDew-video {
     position: fixed;
     top: 0;
     left: 0;
