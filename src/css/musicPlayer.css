@@ -1,0 +1,12 @@
+
+/* gramaphone box */
+.gramophone-interaction {
+    position: absolute;
+    width: 60px;
+    height: 90px;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
